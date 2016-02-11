@@ -1,5 +1,4 @@
-
-danebook
+The Danebook
 
 This is the Real Dane Deal.
 
