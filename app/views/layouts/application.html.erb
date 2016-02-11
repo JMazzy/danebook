@@ -15,7 +15,7 @@
 <% end %>
 
 <% if signed_in_user? %>
-  Welcome, <%= link_to current_user.name, current_user %>!
+  Welcome, <%= link_to "User", current_user %>!
   <%= link_to "Logout", logout_path, method: :delete %>
 <% else %>
   <%= link_to "Login", login_path %>
