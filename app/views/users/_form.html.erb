@@ -1,12 +1,55 @@
+<h2>Sign Up</h2>
+
 <%= form_for @user do |user_fields| %>
-  <%= user_fields.label :email %>
-  <%= user_fields.text_field :email %>
-  <br>
-  <%= user_fields.label :password %>
-  <%= user_fields.password_field :password %>
-  <br>
-  <%= user_fields.label :password_confirmation %>
-  <%= user_fields.password_field :password_confirmation %>
-  <br>
-  <%= user_fields.submit "Sign Up" %>
+  <%= user_fields.fields_for :profile do |profile_fields| %>
+    <div class="row form-group">
+      <div class="col-xs-6">
+        <%= profile_fields.text_field :first_name, placeholder: "First Name" %>
+      </div>
+      <div class="col-xs-6">
+        <%= profile_fields.text_field :last_name, placeholder: "Last Name" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row form-group">
+    <div class="col-xs-12">
+      <%= user_fields.text_field :email, placeholder: "Email" %>
+    </div>
+  </div>
+  
+  <div class="row form-group">
+    <div class="col-xs-12">
+      <%= user_fields.password_field :password, placeholder: "Your New Password" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-xs-12">
+      <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password" %>
+    </div>
+  </div>
+
+  <%= user_fields.fields_for :profile do |profile_fields| %>
+    <div class="row form-group">
+      <div class="col-xs-12">
+        <%= profile_fields.radio_button :gender, "Male" %>
+        <%= profile_fields.radio_button :gender, "Female" %>
+        <%= profile_fields.radio_button :gender, "Other" %>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-xs-12">
+        <%= profile_fields.date_field :birthday %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="row form-group">
+    <div class="col-xs-12">
+      <%= user_fields.submit "Sign Up", class: "btn btn-primary btn-block" %>
+    </div>
+  </div>
+  
 <% end %>

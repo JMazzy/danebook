@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Danebook</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Danebook</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<% flash.each do |name,message| %>
-  <div class="flash flash-<%= name.to_s %>">
-    <%= "#{name.to_s.upcase}: #{message}" %>
-  </div>
-<% end %>
+    <nav id="danebook-navbar" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <section class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a id="brand-text" class="navbar-brand h1" href="#">Danebook</a>
+        </section>
 
-<% if signed_in_user? %>
-  Welcome, <%= link_to "User", current_user %>!
-  <%= link_to "Logout", logout_path, method: :delete %>
-<% else %>
-  <%= link_to "Login", login_path %>
-<% end %>
+        <!--collapsing login form-->
+        <section id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email">
+              <input type="password" class="form-control" placeholder="Password">
+              <button type="submit" class="form-control btn btn-info">Log In</button>
+            </div>
+          </form>
+        </section><!--/.navbar-collapse -->
+      </div><!--end container-->
+    </nav><!--end navbar-->
 
-<%= yield %>
+    <% flash.each do |name,message| %>
+      <div class="flash flash-<%= name.to_s %>">
+        <%= "#{name.to_s.upcase}: #{message}" %>
+      </div>
+    <% end %>
 
-</body>
+    <% if signed_in_user? %>
+      Welcome, <%= link_to "User", current_user %>!
+      <%= link_to "Logout", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
 </html>

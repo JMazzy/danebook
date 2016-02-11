@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
             length: { in: 8..24 }, 
             allow_nil: true
 
+  has_one :profile, inverse_of: :user
+
+  accepts_nested_attributes_for :profile
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

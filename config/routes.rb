@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "users#index"
+  root "users#new"
 
   resources :users
   
@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 
-  resource :profile
+  resources :profiles
 
 end
