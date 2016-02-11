@@ -9,7 +9,9 @@
 <body>
 
 <%= flash.each do |name,message| %>
-  <div><%= "#{name.upcase}: #{message}" %></div>
+  <div class="flash flash-<%= name.to_s %>">
+    <%= "#{name.to_s.upcase}: #{message}" %>
+  </div>
 <% end %>
 
 <%= yield %>
