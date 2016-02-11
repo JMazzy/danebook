@@ -14,6 +14,8 @@ gem 'spring', '1.6.2', group: :development
 gem 'faker', '1.6.1'
 gem 'autoprefixer-rails', '6.3.1'
 
+gem 'bcrypt'
+
 group :development, :test do
   gem 'binding_of_caller', '0.7.2'
   gem 'better_errors', '2.1.1'

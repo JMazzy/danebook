@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_current_user, only: [:edit, :update, :destroy]
+
+  skip_before_action :require_login, only: [:new, :create, :index, :show]
 
   def index
     @users = User.all
@@ -15,6 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new( user_params )
     if @user.save
+      sign_in(@user)
       flash[:success] = "User successfully created!"
       redirect_to user_path
     else
@@ -24,14 +28,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update
+    if current_user.update( user_params )
       flash[:success] = "User successfully updated!"
-      redirect_to user_path
+      redirect_to current_user
     else
       flash.now[:danger] = "Could not update user due to errors."
       render :edit
@@ -39,8 +42,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    if @user.destroy
+    if current_user.destroy
+      sign_out
       flash[:success] = "User successfully deleted!"
     else
       flash[:danger] = "User could not be deleted due to errors."
