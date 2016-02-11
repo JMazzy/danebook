@@ -1,0 +1,29 @@
+/*
+Extra styles on top of Bootstrap
+*/
+body {
+  padding-top: 80px;
+  padding-bottom: 20px; }
+
+#danebook-navbar {
+  background-color: #2B78E4;
+  height: 90px; }
+
+#danebook-footer {
+  background-color: #C1C1C1;
+  height: 20px; }
+
+#signup-button {
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px black; }
+
+#brand-text {
+  font-size: 48px;
+  color: white; }
+
+#bullet-points {
+  color: #7A7A75;
+  margin: 5px auto;
+  font-size: 16px; }
+
+/*# sourceMappingURL=styles.css.map */
