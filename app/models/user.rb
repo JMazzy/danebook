@@ -1,16 +1,17 @@
 class User < ActiveRecord::Base
   before_create :generate_token
 
-  has_secure_password
-
-  validates :email, uniqueness: true
-  validates :password, 
-            length: { in: 8..24 }, 
-            allow_nil: true
+  has_many :posts, inverse_of: :user
 
   has_one :profile, inverse_of: :user
-
   accepts_nested_attributes_for :profile
+
+  validates :email, uniqueness: true
+  validates :password,
+            length: { in: 8..24 },
+            allow_nil: true
+
+  has_secure_password
 
   def generate_token
     begin

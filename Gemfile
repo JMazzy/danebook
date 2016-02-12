@@ -15,6 +15,7 @@ gem 'faker', '1.6.1'
 gem 'autoprefixer-rails', '6.3.1'
 
 gem 'bcrypt'
+gem 'as-duration'
 
 group :development, :test do
   gem 'binding_of_caller', '0.7.2'

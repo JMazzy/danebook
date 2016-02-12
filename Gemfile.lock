@@ -54,6 +54,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    as-duration (0.1.0)
     autoprefixer-rails (6.3.1)
       execjs
       json
@@ -217,6 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  as-duration
   autoprefixer-rails (= 6.3.1)
   bcrypt
   better_errors (= 2.1.1)
