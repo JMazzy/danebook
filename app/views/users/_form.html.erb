@@ -1,32 +1,32 @@
-<h2>Sign Up</h2>
+<h1>Sign Up</h1>
 
 <%= form_for @user do |user_fields| %>
   <%= user_fields.fields_for :profile do |profile_fields| %>
     <div class="row form-group">
       <div class="col-xs-6">
-        <%= profile_fields.text_field :first_name, placeholder: "First Name" %>
+        <%= profile_fields.text_field :first_name, placeholder: "First Name", class: "form-control" %>
       </div>
       <div class="col-xs-6">
-        <%= profile_fields.text_field :last_name, placeholder: "Last Name" %>
+        <%= profile_fields.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
       </div>
     </div>
   <% end %>
 
   <div class="row form-group">
     <div class="col-xs-12">
-      <%= user_fields.text_field :email, placeholder: "Email" %>
+      <%= user_fields.text_field :email, placeholder: "Email", class: "form-control" %>
     </div>
   </div>
   
   <div class="row form-group">
     <div class="col-xs-12">
-      <%= user_fields.password_field :password, placeholder: "Your New Password" %>
+      <%= user_fields.password_field :password, placeholder: "Your New Password", class: "form-control" %>
     </div>
   </div>
 
   <div class="row form-group">
     <div class="col-xs-12">
-      <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password" %>
+      <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password", class: "form-control" %>
     </div>
   </div>
 
@@ -34,14 +34,15 @@
     <div class="row form-group">
       <div class="col-xs-12">
         <%= profile_fields.radio_button :gender, "Male" %>
+        <%= profile_fields.label "Male" %>
         <%= profile_fields.radio_button :gender, "Female" %>
-        <%= profile_fields.radio_button :gender, "Other" %>
+        <%= profile_fields.label "Female" %>
       </div>
     </div>
 
     <div class="row form-group">
       <div class="col-xs-12">
-        <%= profile_fields.date_field :birthday %>
+        <%= profile_fields.date_field :birthday, class: "form-control" %>
       </div>
     </div>
   <% end %>

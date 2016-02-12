@@ -4,154 +4,23 @@ Extra styles on top of Bootstrap
 
 $danebook-brand-color: #2B78E4;
 $danebook-neutral-color: #C1C1C1;
-$navbar-content-height: 36px;
 $default-padding: 10px;
-$navbar-height: $navbar-content-height + 2*$default-padding;
-$default-border: 1px solid black;
 
-body {
-  padding-top: 80px;
-  padding-bottom: 20px;
+.navbar {
+  background-color: $danebook-brand-color;
+  color: #FFFFFF;
 }
 
-.navbar-brand {
-  padding:$default-padding;
-}
-
-#danebook-navbar {
-  background-color:$danebook-brand-color;
-  height:90px;
-  height:$navbar-height;
-  margin:0;
-}
-
-#danebook-footer {
-  background-color:$danebook-neutral-color;
-  height:20px;
-}
-
-#signup-button {
-  border-radius: 5px;
-  box-shadow: 3px 3px 3px 3px black;
-}
-
-#brand-text {
-  display:inline;
-  vertical-align: middle;
-  font-size: 34px;
-  color:white;
-}
-
-#brand-image {
-  display:inline;
-  background-color:red;
-  width:$navbar-content-height;
-  height:$navbar-content-height;
-  border-radius:$navbar-content-height;
+main {
+  padding-top: 70px;
 }
 
 #bullet-points {
-  color:#7A7A75;
-  margin:5px auto;
-  font-size:16px;
+  line-height: 42px;
+  font-size: 21px;
+  color: #888;
 }
 
-#user-search-holder {
-  padding:$default-padding
-;
-  margin:0;
-  border:none;
-}
-
-#navbar-user-name {
-  display:inline;
-  vertical-align: middle;
-  font-size: 24px;
-  height:$navbar-content-height;
-  color:white;
-  padding:$default-padding
-;
-}
-
-#cover-photo {
-  width:100%;
-}
-
-#profile-photo {
-  width:180px;
-  //height:200px;
-  margin-top:-150px;
-  margin-left:20px;
-}
-
-#tabs {
-  a {
-    color:black;
-  }
-
-  .active a {
-    color:gray;
-  }
-}
-
-.collapse, .navbar-collapse {
-  background-color:$danebook-brand-color;
-}
-
-#about-title {
-  text-align: center;
-}
-
-#edit-button {
-  vertical-align: middle;
-}
-
-#save-changes {
-  background-color:$danebook-brand-color;
-  width:100%;
-  border: 1px solid black;
-  box-shadow: 3px 3px 3px 3px black;
-  margin: 10px;
-}
-
-#about-box {
-  border: 1px solid black;
-  padding:$default-padding;
-  margin:$default-padding;
-}
-
-.post-box {
-  border:$default-border;
-  padding:$default-padding;
-  margin:$default-padding;
-
-  h3 {
-    text-align: center;
-  }
-}
-
-.post-photo {
-  width:100%;
-  vertical-align: top;
-}
-
-.post-button {
-  background-color:$danebook-brand-color;
-  width:25%;
-  border: 1px solid black;
-  box-shadow: 3px 3px 3px 3px black;
-  margin: 10px auto;
-  color:white;
-}
-
-.thumbnail {
-  width:33%;
-}
-
-.bottom-link-text {
-  text-align: center;
-}
-
-.date-text {
-  color:gray;
+.navbar-inverse .navbar-brand {
+  color: #f1f1f1;
 }

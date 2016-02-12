@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <nav id="danebook-navbar" class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <section class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -17,36 +17,41 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a id="brand-text" class="navbar-brand h1" href="#">Danebook</a>
+          <a class="navbar-brand" href='<%= root_path %>'>Danebook</a>
         </section>
 
         <!--collapsing login form-->
-        <section id="navbar" class="navbar-collapse collapse">
+        <section class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email">
-              <input type="password" class="form-control" placeholder="Password">
-              <button type="submit" class="form-control btn btn-info">Log In</button>
+            <div class="form">
+              <%= form_tag session_path do %>
+                <div class="form-group">
+                  <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
+                  <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
+                  <%= check_box_tag :remember_me %>
+                  <%= label_tag "remember me?" %>
+                  <%= submit_tag "Log In", class: "btn btn-primary"%>
+                </div>
+              <% end %>
             </div>
           </form>
         </section><!--/.navbar-collapse -->
       </div><!--end container-->
     </nav><!--end navbar-->
 
-    <% flash.each do |name,message| %>
-      <div class="flash flash-<%= name.to_s %>">
-        <%= "#{name.to_s.upcase}: #{message}" %>
-      </div>
-    <% end %>
+    <main class="container">
+      <section class='row'>
+        <section class='col-md-12'>
+          <% flash.each do |name,message| %>
+            <div class="flash flash-<%= name.to_s %>">
+              <%= "#{name.to_s.upcase}: #{message}" %>
+            </div>
+          <% end %>
+        </section>
+      </section>
 
-    <% if signed_in_user? %>
-      Welcome, <%= link_to "User", current_user %>!
-      <%= link_to "Logout", logout_path, method: :delete %>
-    <% else %>
-      <%= link_to "Login", login_path %>
-    <% end %>
+      <%= yield %>
 
-    <%= yield %>
-
+    </main>
   </body>
 </html>
