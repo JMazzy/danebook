@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img id="cover-photo" src="assets/hogwarts_small.jpg">
+    <img id="profile-photo" src="assets/harry_potter_small.jpg">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-4">
+    <div class="row">
+      <div class="col-xs-8">
+        <ul class="nav nav-tabs tabs">
+          <li role="presentation"><%= link_to "Timeline", "#" %></li>
+          <li role="presentation" class="active"><%= link_to "About", "#" %></li>
+          <li role="presentation"><%= link_to "Photos", "#" %> <% "(#{123})" %></li>
+          <li role="presentation"><%= link_to "Friends", "#" %> <% "(#{456})" %></li>
+        </ul>
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "Edit Profile", edit_profile_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= yield %>

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.build_profile
+    @profile = @user.build_profile
   end
 
   def create
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "User successfully created!"
-      redirect_to user_path(@user)
+      redirect_to profile_path(@user.profile)
     else
-      flash.now[:danger] = "Could not create user due to errors."
+      flash.now[:danger] = "User could not be created due to errors."
       render :new
     end
   end
@@ -58,7 +58,8 @@ class UsersController < ApplicationController
     params.require(:user).permit( :email,
                                   :password,
                                   :password_confirmation,
-                                  { profiles_attributes: [
+                                  { profile_attributes: [
+                                      :id,
                                       :first_name,
                                       :last_name,
                                       :gender,

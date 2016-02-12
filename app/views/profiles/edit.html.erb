@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="text-center">About</h2>
+    <section class="row">
+      <%= form_for @profile do |profile_fields| %>
+        <article class="col-xs-5">
+          <h3>Basic Information</h3>
+          <table class="table">
+            <tr>
+              <td><strong>Birthday: </strong></td>
+              <td><date><%= profile_fields.date_field :birthday, class: "form-control" %></date>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>School: </strong></td>
+              <td><%= profile_fields.text_field :school, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><strong>Hometown: </strong></td>
+              <td><%= profile_fields.text_field :hometown, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><strong>Currently Lives: </strong></td>
+              <td><%= profile_fields.text_field :currently_lives, class: "form-control" %></td>
+            </tr>
+          </table>
+          <h3>Contact Information</h3>
+          <table class="table">
+            <tr>
+              <td><strong>Email: </strong></td>
+              <td><%= @profile.user.email %></td>
+            </tr>
+            <tr>
+              <td><strong>Telephone: </strong></td>
+              <td><%= profile_fields.text_field :phone_number, class: "form-control" %></td>
+            </tr>
+          </table>
+        </article>
+        <article class="col-xs-7">
+          <h3>Words to Live By</h3>
+          <%= profile_fields.text_area :words_to_live_by, class: "form-control" %>
+          <h3>About Me</h3>
+          <%= profile_fields.text_area :about_me, class: "form-control" %>
+
+          <%= profile_fields.submit "Submit Changes", class: "btn btn-info"  %>
+        </article>
+      <% end %>
+    </section>
+  </div>
+</div>

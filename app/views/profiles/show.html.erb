@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xs-12">
+    <section class="row">
+      <article class="col-xs-2 col-xs-offset-5">
+
+      </article>
+      <div class="col-xs-2 col-xs-offset-2">
+
+      </div>
+    </section>
+    <h2 class="text-center">About</h2>
+    <section class="row">
+      <article class="col-xs-5">
+        <h3>Basic Information</h3>
+        <table class="table">
+          <tr>
+            <td><strong>Birthday: </strong></td>
+            <td><date><%= @profile.display_birthday %></date>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>School: </strong></td>
+            <td><%= @profile.school %></td>
+          </tr>
+          <tr>
+            <td><strong>Hometown: </strong></td>
+            <td><%= @profile.hometown %></td>
+          </tr>
+          <tr>
+            <td><strong>Currently Lives: </strong></td>
+            <td><%= @profile.currently_lives %></td>
+          </tr>
+        </table>
+        <h3>Contact Information</h3>
+        <table class="table">
+          <tr>
+            <td><strong>Email: </strong></td>
+            <td><%= @profile.user.email %></td>
+          </tr>
+          <tr>
+            <td><strong>Telephone: </strong></td>
+            <td><%= @profile.phone_number %></td>
+          </tr>
+        </table>
+      </article>
+      <article class="col-xs-7">
+        <h3>Words to Live By</h3>
+        <p><%= @profile.words_to_live_by %></p>
+        <h3>About Me</h3>
+        <p><%= @profile.about_me %></p>
+        <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-info"  %>
+      </article>
+    </section>
+  </div>
+</div>
