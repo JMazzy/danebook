@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def sorted_posts
+    self.posts.order("updated_at DESC")
+  end
+
 end

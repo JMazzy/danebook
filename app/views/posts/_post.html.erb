@@ -15,7 +15,7 @@
     <!--Post Body-->
     <section class="row">
       <section class="col-xs-12">
-        <p><%= @post.body %></p>
+        <p><%= post.body %></p>
       </section>
     </section>
 
@@ -28,7 +28,7 @@
         <a href="#">Comment</a>
       </section>
       <section class="col-md-2 col-md-offset-8">
-        <a href="#">Delete</a>
+        <%= link_to "Delete", user_post_path(@user,post), method: :delete %>
       </section>
     </section>
   </article>
