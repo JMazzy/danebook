@@ -4,18 +4,19 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.sorted_posts
     @profile = @user.profile
-    @new_post = @user.posts.build
+    if @user == current_user
+      @new_post = current_user.posts.build
+    end
   end
 
   def create
-    user = User.find(params[:user_id])
-    post = user.posts.build( post_params )
-    if user.save
+    current_user.posts.build( post_params )
+    if current_user.save
       flash[:success] = "Post created successfully!"
     else
       flash[:danger] = "Failed to create post."
     end
-    redirect_to user_posts_path(user)
+    redirect_to user_posts_path(current_user)
   end
 
   private
