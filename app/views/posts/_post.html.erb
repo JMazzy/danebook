@@ -1,0 +1,35 @@
+<section class="row post-box">
+  <article class="col-md-12">
+    <!-- Post Info -->
+    <section class="row">
+      <section class="col-xs-2">
+        <img class="post-photo" src="assets/harry_potter_small.jpg">
+      </section>
+      <section class="col-xs-10">
+        <%= link_to @profile.full_name, profile_path(@user) %>
+        <br>
+        <datetime class="date-text">June 21, 2015 12:00pm</datetime>
+      </section>
+    </section>
+
+    <!--Post Body-->
+    <section class="row">
+      <section class="col-xs-12">
+        <p><%= @post.body %></p>
+      </section>
+    </section>
+
+    <!-- Like, Comment, Delete links -->
+    <section class="row">
+      <section class="col-md-1">
+        <a href="#">Like</a>
+      </section>
+      <section class="col-md-1">
+        <a href="#">Comment</a>
+      </section>
+      <section class="col-md-2 col-md-offset-8">
+        <a href="#">Delete</a>
+      </section>
+    </section>
+  </article>
+</section>

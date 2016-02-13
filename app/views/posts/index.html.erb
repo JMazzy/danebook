@@ -1,0 +1,345 @@
+<!-- The Timeline Section -->
+<div class="row"> <!--row containing all timeline content-->
+  <section class="col-md-5"> <!--left column-->
+      <!-- About section -->
+      <section class="row post-box">
+        <article class="col-md-12">
+            <h3>About</h3>
+            <section class="row">
+              <article class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p><strong>Born on: </strong></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <date><%= @profile.display_birthday %></date>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p><strong>School: </strong></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><%= @profile.school %></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p><strong>Hometown: </strong></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><%= @profile.hometown %></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p><strong>Currently Lives: </strong></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><%= @profile.currently_lives %></p>
+                  </div>
+                </div>
+              </article>
+            </section>
+        </article>
+      </section>
+
+      <!-- Photo Section -->
+      <section class="row post-box">
+        <article class="col-md-12">
+          <h3>Photos (123)</h3>
+          <section class="row">
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+          </section>
+          <section class="row">
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+          </section>
+          <section class="row">
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/icon_photo_small.png"></a>
+            </section>
+          </section>
+          <section class="row">
+            <section class="col-xs-12 bottom-link-text">
+              <a href="#">See More Photos</a>
+            </section>
+          </section>
+        </article>
+      </section>
+
+      <!-- Friends Section -->
+      <section class="row post-box">
+        <article class="col-md-12">
+          <h3>Friends (456)</h3>
+          <section class="row">
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/user_silhouette_generic.png"></a>
+              <a href="#">Hermione Granger</a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/user_silhouette_generic.png"></a>
+              <a href="#">Ron Weasley</a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/user_silhouette_generic.png"></a>
+              <a href="#">Ginny Weasley</a>
+            </section>
+          </section>
+          <section class="row">
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/user_silhouette_generic.png"></a>
+              <a href="#">Neville Longbottom</a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/user_silhouette_generic.png"></a>
+              <a href="#">Luna Lovegood</a>
+            </section>
+            <section class="col-xs-4 thumbnail">
+              <a href="#"><img src="assets/user_silhouette_generic.png"></a>
+              <a href="#">Rubeus Hagrid</a>
+            </section>
+          </section>
+          <section class="row">
+            <section class="col-xs-12 bottom-link-text">
+              <a href="#">See More Friends</a>
+            </section>
+          </section>
+        </article>
+      </section>
+
+    </section> <!--end left column-->
+
+    <section class="col-md-7"> <!--right column-->
+
+      <!--Post Form-->
+      <section class="row post-box">
+        <article class="col-md-12 form-group">
+          <h3>Post</h3>
+          <textarea class="form-control" rows="3" placeholder="What's on your mind?"></textarea>
+          <button class="btn btn-submit post-button">Post</button>
+        </article>
+      </section>
+
+      <!--List of Posts-->
+
+      <%= render partial: "post" %>
+
+      <!-- Post -->
+      <section class="row post-box">
+        <article class="col-md-12">
+          <!-- Post Info -->
+          <section class="row">
+            <section class="col-xs-2">
+              <img class="post-photo" src="assets/harry_potter_small.jpg">
+            </section>
+            <section class="col-xs-10">
+              <a href="about.html">Harry Potter</a><br>
+              <datetime class="date-text">June 21, 2015 12:00pm</datetime>
+            </section>
+          </section>
+
+          <!--Post Body-->
+          <section class="row">
+            <section class="col-xs-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+          </section>
+
+          <!-- Like, Comment, Delete links -->
+          <section class="row">
+            <section class="col-md-1">
+              <a href="#">Like</a>
+            </section>
+            <section class="col-md-1">
+              <a href="#">Comment</a>
+            </section>
+            <section class="col-md-2 col-md-offset-8">
+              <a href="#">Delete</a>
+            </section>
+          </section>
+        </article>
+      </section>
+
+      <!-- Post -->
+      <section class="row post-box">
+        <article class="col-md-12">
+          <!-- Post Info -->
+          <section class="row">
+            <section class="col-xs-2">
+              <img class="post-photo" src="assets/harry_potter_small.jpg">
+            </section>
+            <section class="col-xs-10">
+              <a href="about.html">Harry Potter</a><br>
+              <datetime class="date-text">June 21, 2015 12:00pm</datetime>
+            </section>
+          </section>
+          <!--Post Body-->
+          <section class="row">
+            <section class="col-xs-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+          </section>
+
+          <!-- Like, Comment, Delete links -->
+          <section class="row">
+            <section class="col-md-1">
+              <a href="#">Like</a>
+            </section>
+            <section class="col-md-1">
+              <a href="#">Comment</a>
+            </section>
+            <section class="col-md-2 col-md-offset-8">
+              <a href="#">Delete</a>
+            </section>
+          </section>
+
+          <!-- Likes -->
+          <section class="row">
+            <section class="col-md-12">
+              <p><a href="#">Hermione Granger</a> likes this.</p>
+            </section>
+          </section>
+        </article>
+      </section>
+
+      <!-- Post -->
+      <section class="row post-box">
+        <article class="col-xs-12">
+          <!-- Post Information -->
+          <section class="row">
+            <section class="col-xs-2">
+              <img class="post-photo" src="assets/harry_potter_small.jpg">
+            </section>
+            <section class="col-xs-10">
+              <a href="about.html">Harry Potter</a><br>
+              <datetime class="date-text">June 21, 2015 12:00pm</datetime>
+            </section>
+          </section>
+          <!-- Post body -->
+          <section class="row">
+            <section class="col-xs-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+          </section>
+
+          <!-- Like and Delete links -->
+          <section class="row">
+            <section class="col-md-1">
+              <a href="#">Unlike</a>
+            </section>
+            <section class="col-md-2 col-md-offset-9">
+              <a href="#">Delete</a>
+            </section>
+          </section>
+
+          <!--Likes-->
+          <section class="row">
+            <section class="col-md-12">
+              <p>You, <a href="#">Hermione Granger</a>, and 3 others like this.</p>
+            </section>
+          </section>
+
+          <!-- Comment by Other User-->
+          <section class="row">
+            <section class="col-xs-2">
+              <img class="post-photo" src="assets/user_silhouette_generic.png">
+            </section>
+            <section class="col-xs-10">
+              <a href="#">Ron Weasley</a><br>
+              <datetime class="date-text">June 21, 2015 12:00pm</datetime><br><br>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+          </section>
+          <!-- Like link -->
+          <section class="row">
+            <section class="col-xs-1 col-xs-offset-2">
+              <a href="#">Like</a>
+            </section>
+          </section><br>
+
+          <!-- Comment by Current User -->
+          <section class="row">
+            <section class="col-xs-2">
+              <img class="post-photo" src="assets/user_silhouette_generic.png">
+            </section>
+            <section class="col-xs-10">
+              <a href="#">Harry Potter</a><br>
+              <datetime class="date-text">June 21, 2015 12:00pm</datetime><br><br>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+          </section>
+          <!-- Like amd Delete links -->
+          <section class="row">
+            <section class="col-xs-1 col-xs-offset-2">
+              <a href="#">Like</a>
+            </section>
+            <section class="col-xs-2 col-xs-offset-7">
+              <a href="#">Delete</a>
+            </section>
+          </section><br>
+
+          <!-- Add Comment -->
+          <section class="row">
+            <article class="col-md-12 form-group">
+              <textarea class="form-control" rows="3" placeholder="Leave a comment..."></textarea>
+              <section class="row">
+                <section class="col-md-10">
+                  <button class="btn btn-submit post-button">Comment</button>
+                </section>
+                <section class="col-md-2">
+                  <a href="#">Cancel</a>
+                </section>
+              </section>
+            </article>
+          </section>
+        </article>
+      </section>
+    </section> <!--end right column-->
+</div> <!--end row containing all timeline content-->

@@ -26,4 +26,8 @@ class Profile < ActiveRecord::Base
   def display_birthday
     "#{Date::MONTHNAMES[birthday.month]} #{birthday.day}, #{birthday.year}"
   end
+
+  def full_name
+    self.first_name + " " + self.last_name
+  end
 end
