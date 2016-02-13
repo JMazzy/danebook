@@ -1,0 +1,42 @@
+<!-- About section -->
+<section class="row post-box">
+  <article class="col-md-12">
+      <h3>About</h3>
+      <section class="row">
+        <article class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-6">
+              <p><strong>Born on: </strong></p>
+            </div>
+            <div class="col-xs-6">
+              <date><%= @profile.display_birthday %></date>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <p><strong>School: </strong></p>
+            </div>
+            <div class="col-xs-6">
+              <p><%= @profile.school %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <p><strong>Hometown: </strong></p>
+            </div>
+            <div class="col-xs-6">
+              <p><%= @profile.hometown %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <p><strong>Currently Lives: </strong></p>
+            </div>
+            <div class="col-xs-6">
+              <p><%= @profile.currently_lives %></p>
+            </div>
+          </div>
+        </article>
+      </section>
+  </article>
+</section>
