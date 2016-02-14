@@ -9,11 +9,13 @@
 
     <main class="container">
 
-      <%= render 'layouts/tabs' if current_user %>
-
       <%= render 'layouts/flash' %>
 
-      <%= yield %>
+      <section class="row">
+        <section class="col-md-8 col-md-offset-2">
+          <%= yield %>
+        </section>
+      </section>
 
     </main>
   </body>

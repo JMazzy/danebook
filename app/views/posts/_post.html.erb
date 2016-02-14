@@ -1,14 +1,14 @@
-<section class="row post-box">
+<section class="row post">
   <article class="col-md-12">
     <!-- Post Info -->
     <section class="row">
       <section class="col-xs-2">
-        <img class="post-photo" src="assets/harry_potter_small.jpg">
+        <%= image_tag "user_silhouette_generic.png", width: 100, height: 100 %>
       </section>
       <section class="col-xs-10">
         <%= link_to @profile.full_name, profile_path(@user) %>
         <br>
-        <datetime class="date-text">June 21, 2015 12:00pm</datetime>
+        <datetime class="date-text"><%= post.created_at %></datetime>
       </section>
     </section>
 
@@ -22,7 +22,11 @@
     <!-- Like, Comment, Delete links -->
     <section class="row">
       <section class="col-md-1">
-        <a href="#">Like</a>
+        <% if post.liked?(current_user) %>
+          <%= link_to "Unlike", post_like_path(post, post.user_like(current_user)), method: :delete %>
+        <% else %>
+          <%= link_to "Like", post_likes_path(post, likeable_type: "Post", likeable_id: post.id), method: :post %>
+        <% end %>
       </section>
       <section class="col-md-1">
         <a href="#">Comment</a>
@@ -31,5 +35,12 @@
         <%= link_to "Delete", user_post_path(@user,post), method: :delete %>
       </section>
     </section>
+
+    <% post.comments.each do |comment| %>
+      <%= render partial: "comments/view", locals: { comment: comment } %>
+    <% end %>
+
+    <%= render partial: "comments/form" %>
+
   </article>
 </section>

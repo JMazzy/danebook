@@ -33,6 +33,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :signed_in_user?
 
+  def current_user_home
+    signed_in_user? ? user_posts_path(current_user) : root_path
+  end
+  helper_method :current_user_home
+
   def require_login
     unless signed_in_user?
       flash[:error] = "Not authorized, please sign in!"
@@ -45,5 +50,5 @@ class ApplicationController < ActionController::Base
       flash[:error] = "You're not authorized to view that!"
       redirect_to root_url
     end
-  end 
+  end
 end

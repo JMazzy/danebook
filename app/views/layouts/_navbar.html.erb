@@ -7,26 +7,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href='<%= root_path %>'>Danebook</a>
+      <%= link_to "Danebook", current_user_home, class: "navbar-brand" %>
     </section>
 
     <!--collapsing login form-->
     <section class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right">
+      <%= form_tag session_path, class: "navbar-form navbar-right" do %>
         <% if signed_in_user? %>
+          <%= link_to current_user.full_name, profile_path(current_user.profile) %>
           <%= link_to "Sign Out", logout_path, method: :delete, class: "btn btn-info" %>
         <% else %>
-          <%= form_tag session_path do %>
-            <div class="form-group">
-              <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
-              <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
-              <%= check_box_tag :remember_me %>
-              <%= label_tag "remember me?" %>
-              <%= submit_tag "Sign In", class: "btn btn-info"%>
-            </div>
-          <% end %>
+          <div class="form-group">
+            <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
+            <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
+            <%= check_box_tag :remember_me %>
+            <%= label_tag "remember me?" %>
+            <%= submit_tag "Sign In", class: "btn btn-info"%>
+          </div>
         <% end %>
-      </form>
+      <% end %>
     </section><!--/.navbar-collapse -->
   </div><!--end container-->
 </nav><!--end navbar-->

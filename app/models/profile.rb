@@ -17,8 +17,6 @@ class Profile < ActiveRecord::Base
   validates :currently_lives, length: { maximum: 250 },
                               allow_nil: true,
                               allow_blank: true
-  validates :phone_number,  allow_nil: true,
-                            length: { in: 8..15 }
   validates :words_to_live_by, length: { maximum: 1000 }
   validates :about_me, length: { maximum: 1000 }
 

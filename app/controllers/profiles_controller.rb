@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
       flash[:success] = "Profile updated successfully!"
       redirect_to profile_path
     else
-      flash.now[:warning] = "Could not save your changes."
+      flash.now[:danger] = "Could not save your changes."
       render :edit
     end
   end

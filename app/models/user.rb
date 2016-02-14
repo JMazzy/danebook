@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   before_create :generate_token
 
   has_many :posts, inverse_of: :user
+  has_many :comments
+  has_many :likes
 
-  has_one :profile, inverse_of: :user
+  has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   validates :email, uniqueness: true
@@ -27,6 +29,10 @@ class User < ActiveRecord::Base
 
   def sorted_posts
     self.posts.order("updated_at DESC")
+  end
+
+  def full_name
+    "#{profile.first_name} #{profile.last_name}"
   end
 
 end

@@ -19,6 +19,16 @@ class PostsController < ApplicationController
     redirect_to user_posts_path(current_user)
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    if post.user == current_user && post.destroy
+      flash[:success] = "Post deleted successfully!"
+    else
+      flash[:danger] = "Failed to delete post."
+    end
+    redirect_to user_posts_path(current_user)
+  end
+
   private
 
   def post_params

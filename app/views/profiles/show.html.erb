@@ -1,13 +1,8 @@
 <div class="row">
   <div class="col-xs-12">
-    <section class="row">
-      <article class="col-xs-2 col-xs-offset-5">
 
-      </article>
-      <div class="col-xs-2 col-xs-offset-2">
+    <%= render partial: 'layouts/tabs', locals: { user: @profile.user } %>
 
-      </div>
-    </section>
     <h2 class="text-center">About</h2>
     <section class="row">
       <article class="col-xs-5">
