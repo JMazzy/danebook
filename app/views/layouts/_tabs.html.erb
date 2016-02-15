@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-xs-12">
-    <%= image_tag "blank_cover_photo.png", class: "cover-photo" %>
-    <%= image_tag "blank_profile_photo.png", class: "profile-photo" %>
+    <div class="cover-photo-area text-center">
+      <h1 class="cover-photo-name"><%= user.full_name %></h1>
+      <%= image_tag "blank_cover_photo.png", class: "cover-photo" %>
+      <%= image_tag "blank_profile_photo.png", class: "profile-photo" %>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -9,8 +12,8 @@
     <div class="row">
       <div class="col-xs-8">
         <ul class="nav nav-tabs tabs">
-          <li role="presentation"><%= link_to "Timeline", user_posts_path(user) %></li>
-          <li role="presentation"><%= link_to "About", "#" %></li>
+          <li role="presentation"><%= link_to "Timeline", user_path(user) %></li>
+          <li role="presentation"><%= link_to "About", profile_path(user.profile) %></li>
           <li role="presentation"><%= link_to "Photos", "#" %> <% "(#{123})" %></li>
           <li role="presentation"><%= link_to "Friends", "#" %> <% "(#{456})" %></li>
         </ul>

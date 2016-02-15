@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
 
+  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_current_user
+
   def index
-    
+    # Will be used for the "news feed..."
   end
 
   def create

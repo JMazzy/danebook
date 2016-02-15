@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  skip_before_action :require_current_user
+
   def create
     comment = Comment.new( comment_params )
     comment.user_id = current_user.id
@@ -10,10 +13,18 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
 
-  def index
-    @comments = extract_commentable.comments
+  def destroy
+    comment = Comment.find(params[:id])
+    if comment.user == current_user && comment.destroy
+      flash[:success] = "Comment deleted!"
+    else
+      flash[:danger] = "Comment NOT deleted!"
+    end
+    redirect_to :back
   end
+
   private
+
   def extract_commentable
     resource, id = request.path.split('/')[1,2]
     resource.singularize.classify.constantize.find(id)

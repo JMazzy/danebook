@@ -5,4 +5,8 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
 
   has_many :subcomments, class_name: "Comment", foreign_key: :commentable_id, as: :commentable
+
+  def sorted_comments
+    self.subcomments.order("created_at DESC")
+  end
 end

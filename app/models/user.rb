@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def sorted_posts
-    self.posts.order("updated_at DESC")
+    self.posts.order("created_at DESC")
   end
 
   def full_name

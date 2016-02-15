@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :require_login
+  before_action :require_current_user
 
   private
 
@@ -34,7 +35,7 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in_user?
 
   def current_user_home
-    signed_in_user? ? user_posts_path(current_user) : root_path
+    signed_in_user? ? user_path(current_user) : root_path
   end
   helper_method :current_user_home
 
@@ -46,8 +47,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless params[:id] == current_user.id.to_s
-      flash[:error] = "You're not authorized to view that!"
+    unless params[:id] == current_user.id.to_s || params[:user_id] == current_user.id.to_s
+      flash[:error] = "You're not authorized to do that!"
       redirect_to root_url
     end
   end

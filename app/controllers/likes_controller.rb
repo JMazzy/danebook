@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  
+  skip_before_action :require_current_user
 
   def create
     like = Like.new( user_id: current_user.id,
@@ -23,10 +25,8 @@ class LikesController < ApplicationController
     redirect_to :back
   end
 
-  def index
-    @likes = extract_likeable.likes
-  end
   private
+
   def extract_likeable
     resource, id = request.path.split('/')[1,2]
     resource.singularize.classify.constantize.find(id)

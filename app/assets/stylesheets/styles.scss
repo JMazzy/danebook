@@ -34,13 +34,26 @@ main {
   padding-left: 50px;
 }
 
-.cover-photo {
-}
+.cover-photo-area {
+  padding: 0px;
+  height: 315px;
+  width: 851px;
 
-.profile-photo {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
+  .cover-photo-name {
+    color: white;
+    position: absolute;
+    top: 0;
+  }
+
+  .cover-photo {
+
+  }
+
+  .profile-photo {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+  }
 }
 
 .content-column {

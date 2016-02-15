@@ -1,5 +1,8 @@
 class ProfilesController < ApplicationController
 
+  skip_before_action :require_login, only: [:show]
+  skip_before_action :require_current_user, only: [:show]
+
   def show
     @profile = Profile.find(params[:id])
   end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   skip_before_action :require_login, only: [:new, :create, :index, :show]
+  skip_before_action :require_current_user, only: [:new, :create, :index, :show]
 
   def index
     @users = User.all
