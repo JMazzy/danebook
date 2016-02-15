@@ -1,12 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
-    @posts = @user.sorted_posts
-    @profile = @user.profile
-    if @user == current_user
-      @new_post = current_user.posts.build
-    end
+    
   end
 
   def create
@@ -16,7 +11,7 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Failed to create post."
     end
-    redirect_to user_posts_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   def destroy
@@ -26,7 +21,7 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Failed to delete post."
     end
-    redirect_to user_posts_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   private

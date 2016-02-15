@@ -1,4 +1,4 @@
-<section class="row post">
+<section class="row post panel panel-default">
   <article class="col-md-12">
     <!-- Post Info -->
     <section class="row">
@@ -6,7 +6,7 @@
         <%= image_tag "user_silhouette_generic.png", width: 100, height: 100 %>
       </section>
       <section class="col-xs-10">
-        <%= link_to @profile.full_name, profile_path(@user) %>
+        <%= link_to @user.profile.full_name, profile_path(@user) %>
         <br>
         <datetime class="date-text"><%= post.created_at %></datetime>
       </section>
@@ -22,14 +22,9 @@
     <!-- Like, Comment, Delete links -->
     <section class="row">
       <section class="col-md-1">
-        <% if post.liked?(current_user) %>
-          <%= link_to "Unlike", post_like_path(post, post.user_like(current_user)), method: :delete %>
-        <% else %>
-          <%= link_to "Like", post_likes_path(post, likeable_type: "Post", likeable_id: post.id), method: :post %>
-        <% end %>
-      </section>
-      <section class="col-md-1">
-        <a href="#">Comment</a>
+
+        <%= render partial: "likes/like_area", locals: { likeable: post } %>
+
       </section>
       <section class="col-md-2 col-md-offset-8">
         <%= link_to "Delete", user_post_path(@user,post), method: :delete %>
@@ -40,7 +35,7 @@
       <%= render partial: "comments/view", locals: { comment: comment } %>
     <% end %>
 
-    <%= render partial: "comments/form" %>
+    <!-- <%= render partial: "comments/form", locals: { commentable: post } %> -->
 
   </article>
 </section>

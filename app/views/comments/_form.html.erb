@@ -1,0 +1,12 @@
+<section class="row comment">
+  <section class="col-xs-10">
+
+    <%= form_for @new_comment, html: { method: 'POST' }, url: comments_path do |f| %>
+      <%= f.text_area :body, class: "form-control", placeholder: "What do you want to say?" %>
+      <%= f.hidden_field :commentable_id, value: commentable.id %>
+      <%= f.hidden_field :commentable_type, value: commentable.class.to_s %>
+      <%= f.submit "Comment", class: "btn btn-primary" %>
+    <% end %>
+
+  </section>
+</section>

@@ -1,19 +1,34 @@
-<!-- Comment by Other User-->
-<section class="row comment">
-  <section class="col-xs-2">
-    <%= image_tag "user_silhouette_generic.png", width: 75, height: 75 %>
-  </section>
-  <section class="col-xs-10">
-    <%= link_to comment.user.full_name, profile_path(comment.user.profile) %>
-    <br>
-    <%= comment.created_at %>
-    <br>
-    <%= comment.body %>
-  </section>
+<section class="row comment panel panel-default">
+  <article class="col-md-12">
+
+    <!-- Comment by Other User-->
+    <section class="row">
+      <section class="col-xs-2">
+        <%= image_tag "user_silhouette_generic.png", width: 75, height: 75 %>
+      </section>
+      <section class="col-xs-10">
+        <%= link_to comment.user.full_name, profile_path(comment.user.profile) %>
+        <br>
+        <%= comment.created_at %>
+        <br>
+        <%= comment.body %>
+      </section>
+    </section>
+    <!-- Like link -->
+    <section class="row">
+      <section class="col-md-1">
+
+        <%= render partial: "likes/like_area", locals: { likeable: comment } %>
+
+      </section>
+    </section>
+
+    <% comment.subcomments.each do |subcomment| %>
+      <%= render partial: "comments/view", locals: { comment: subcomment } %>
+    <% end %>
+
+
+    <!-- <%= render partial: "comments/form", locals: { commentable: comment } %> -->
+
+  </article>
 </section>
-<!-- Like link -->
-<section class="row">
-  <section class="col-xs-1 col-xs-offset-2">
-    <%= link_to "Like", "#" %>
-  </section>
-</section><br>

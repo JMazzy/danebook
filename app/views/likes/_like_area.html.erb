@@ -1,0 +1,5 @@
+<% if likeable.liked?(current_user) %>
+  <%= link_to "Unlike", like_path( likeable.user_like(current_user) ), method: :delete %>
+<% else %>
+  <%= link_to "Like", likes_path( likeable_type: likeable.class.to_s, likeable_id: likeable.id), method: :post %>
+<% end %>

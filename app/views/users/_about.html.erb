@@ -9,7 +9,7 @@
               <p><strong>Born on: </strong></p>
             </div>
             <div class="col-xs-6">
-              <date><%= @profile.display_birthday %></date>
+              <date><%= @user.profile.display_birthday %></date>
             </div>
           </div>
           <div class="row">
@@ -17,7 +17,7 @@
               <p><strong>School: </strong></p>
             </div>
             <div class="col-xs-6">
-              <p><%= @profile.school %></p>
+              <p><%= @user.profile.school %></p>
             </div>
           </div>
           <div class="row">
@@ -25,7 +25,7 @@
               <p><strong>Hometown: </strong></p>
             </div>
             <div class="col-xs-6">
-              <p><%= @profile.hometown %></p>
+              <p><%= @user.profile.hometown %></p>
             </div>
           </div>
           <div class="row">
@@ -33,7 +33,7 @@
               <p><strong>Currently Lives: </strong></p>
             </div>
             <div class="col-xs-6">
-              <p><%= @profile.currently_lives %></p>
+              <p><%= @user.profile.currently_lives %></p>
             </div>
           </div>
         </article>

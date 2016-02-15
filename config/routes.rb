@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :likes
   end
 
+  resources :likes
+
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"

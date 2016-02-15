@@ -11,15 +11,15 @@
 
   </section> <!--end left column-->
 
-  <section class="col-md-9"> <!--right column-->
+  <section class="col-md-9 content-column"> <!--right column-->
 
-    <%= render partial: "form" if @user == current_user %>
+    <%= render partial: "posts/form" if @user == current_user %>
 
     <!--List of Posts-->
 
-    <% @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
 
-      <%= render partial: "post", locals: { post: post } %>
+      <%= render partial: "posts/view", locals: { post: post } %>
 
     <% end %>
 

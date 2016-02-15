@@ -9,6 +9,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    if @user == current_user
+      @new_post = current_user.posts.build
+    end
+
+    @new_comment = current_user.comments.build
   end
 
   def new
