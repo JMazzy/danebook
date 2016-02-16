@@ -5,6 +5,16 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
+  has_many :initiated_friendings, class_name: "Friending",
+                                  foreign_key: :friender_id
+  has_many :friends,              through: :initiated_friendings,
+                                  source: :friendee
+
+  has_many :received_friendings,  class_name: "Friending",
+                                  foreign_key: :friendee_id
+  has_many :frienders,            through: :received_friendings,
+                                  source: :friender
+
   has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile
 

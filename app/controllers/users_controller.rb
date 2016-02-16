@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
-  skip_before_action :require_login, only: [:new, :create, :index, :show]
+  skip_before_action :require_login, only: [:new, :create]
   skip_before_action :require_current_user, only: [:new, :create, :index, :show]
 
   def index
-    @users = User.all
+    @user = params[:user_id] ? User.find(params[:user_id]) : current_user
+    @users = @user.friends
   end
 
   def show

@@ -1,34 +1,14 @@
 <!-- Friends Section -->
 <section class="row post-box">
   <article class="col-md-12">
-    <h3>Friends (456)</h3>
+    <h3>Friends (<%= @user.friends.count(:email) %>)</h3>
     <section class="row">
-      <section class="col-xs-4 thumbnail">
-        <%= image_tag "user_silhouette_generic.png", width:75, height:75 %>
-        <a href="#">Hermione Granger</a>
-      </section>
-      <section class="col-xs-4 thumbnail">
-        <%= image_tag "user_silhouette_generic.png", width:75, height:75 %>
-        <a href="#">Ron Weasley</a>
-      </section>
-      <section class="col-xs-4 thumbnail">
-        <%= image_tag "user_silhouette_generic.png", width:75, height:75 %>
-        <a href="#">Ginny Weasley</a>
-      </section>
-    </section>
-    <section class="row">
-      <section class="col-xs-4 thumbnail">
-        <%= image_tag "user_silhouette_generic.png", width:75, height:75 %>
-        <a href="#">Neville Longbottom</a>
-      </section>
-      <section class="col-xs-4 thumbnail">
-        <%= image_tag "user_silhouette_generic.png", width:75, height:75 %>
-        <a href="#">Luna Lovegood</a>
-      </section>
-      <section class="col-xs-4 thumbnail">
-        <%= image_tag "user_silhouette_generic.png", width:75, height:75 %>
-        <a href="#">Rubeus Hagrid</a>
-      </section>
+      <% @user.friends.limit(6).each do |friend| %>
+        <section class="col-xs-4 thumbnail">
+          <%= image_tag "user_silhouette_generic.png", width:75, height:75 %>
+          <%= link_to friend.full_name, user_path(friend) %>
+        </section>
+      <% end %>
     </section>
     <section class="row">
       <section class="col-xs-12 bottom-link-text">

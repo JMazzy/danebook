@@ -4,6 +4,7 @@
       <h1 class="cover-photo-name"><%= user.full_name %></h1>
       <%= image_tag "blank_cover_photo.png", class: "cover-photo" %>
       <%= image_tag "blank_profile_photo.png", class: "profile-photo" %>
+      <%= friend_button(user) %>
     </div>
   </div>
 </div>
@@ -15,7 +16,7 @@
           <li role="presentation"><%= link_to "Timeline", user_path(user) %></li>
           <li role="presentation"><%= link_to "About", profile_path(user.profile) %></li>
           <li role="presentation"><%= link_to "Photos", "#" %> <% "(#{123})" %></li>
-          <li role="presentation"><%= link_to "Friends", "#" %> <% "(#{456})" %></li>
+          <li role="presentation"><%= link_to "Friends", users_path(user_id: user.id) %> <% "(#{456})" %></li>
         </ul>
       </div>
       <div class="col-xs-4">

@@ -54,8 +54,18 @@ main {
     left: 20px;
     bottom: 20px;
   }
+
+  .btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
 }
 
 .content-column {
   padding-left: 20px;
+}
+
+.panel {
+  padding: 10px;
 }

@@ -4,6 +4,28 @@ Post.delete_all
 Comment.delete_all
 Like.delete_all
 
+special_user = User.create(   email: "foo@bar.com",
+                              password: "foo1bar2",
+                              password_confirmation: "foo1bar2")
+
+special_user.build_profile( first_name: "Foo",
+                            last_name: "Bar",
+                            gender: "Male",
+                            birthday: Faker::Time.between(20.years.ago, 40.years.ago),
+                            school: "Foo School of Bars",
+                            hometown: "Fooville, Barland",
+                            currently_lives: "Bar City, Fooland",
+                            phone_number: Faker::PhoneNumber.cell_phone,
+                            words_to_live_by: Faker::Lorem.paragraph,
+                            about_me: Faker::Lorem.paragraph
+)
+
+5.times do
+  special_user.posts.build( body: Faker::Lorem.paragraph )
+end
+
+special_user.save!
+
 10.times do
   password = Faker::Internet.password
   user = User.create(  email: Faker::Internet.safe_email,
@@ -26,10 +48,17 @@ Like.delete_all
     user.posts.build( body: Faker::Lorem.paragraph )
   end
 
-  user.save
+  user.save!
 end
 
-50.times do
+User.all.each do |user|
+  (2..5).each do |num|
+    friend = User.all[user.id - num]
+    user.friends << friend
+  end
+end
+
+100.times do
   user = User.all.sample
   post = Post.all.sample
   comment = Comment.create( user_id: user.id,
@@ -43,7 +72,7 @@ end
   )
 end
 
-50.times do
+100.times do
   user = User.all.sample
   comment = Comment.all.sample
   subcomment = Comment.create( user_id: user.id,

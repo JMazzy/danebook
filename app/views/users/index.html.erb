@@ -1,3 +1,30 @@
-<% @users.each do |user| %>
-  <%= user.email %>
-<% end %>
+<%= render partial: 'layouts/tabs', locals: { user: @user } %>
+
+<h2 class="text-center">Friends</h2>
+<section class="row">
+
+  <% @users.each do |user| %>
+    <article class="col-md-6 panel panel-default">
+      <section class="row">
+        <section class="col-md-12">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <%= image_tag "user_silhouette_generic.png", class: "media-object", width: 64, height: 64 %>
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to user.full_name, user_path(user) %>
+              </h4>
+              <p>
+                <%= link_to user.friends.count(:email), users_path(user_id: user.id) %> friends
+              </p>
+              <%= friend_button(user) %>
+            </div>
+          </div>
+        </section>
+      </section>
+    </article>
+  <% end %>
+</section>
