@@ -51,13 +51,6 @@ special_user.save!
   user.save!
 end
 
-User.all.each do |user|
-  (2..5).each do |num|
-    friend = User.all[user.id - num]
-    user.friends << friend
-  end
-end
-
 100.times do
   user = User.all.sample
   post = Post.all.sample
@@ -85,4 +78,13 @@ end
                 likeable_id: comment.id,
                 likeable_type: "Comment",
   )
+end
+
+User.all.each do |user|
+  User.all.each do |friend|
+    unless user == friend
+      friending = Friending.new( friender_id: user.id, friendee_id: friend.id )
+      friending.save!
+    end
+  end
 end
