@@ -50,6 +50,9 @@ group :development, :test do
   gem 'rspec-rails', '3.4.2'
   gem 'guard-rspec', '4.6.4', require: false
   gem 'factory_girl_rails', '4.6.0'
+
+  gem 'capybara', '2.6.2'
+  gem 'launchy', '2.4.3'
 end
 
 group :production do
