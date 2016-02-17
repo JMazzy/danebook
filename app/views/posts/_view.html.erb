@@ -31,11 +31,11 @@
       </section>
     </section>
 
+    <%= render partial: "comments/form", locals: { commentable: post } %>
+
     <% post.sorted_comments.each do |comment| %>
       <%= render partial: "comments/view", locals: { comment: comment } %>
     <% end %>
-
-    <%= render partial: "comments/form", locals: { commentable: post } %>
 
   </article>
 </section>
