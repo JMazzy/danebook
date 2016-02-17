@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates :password,
             length: { in: 8..24 },
             allow_nil: true

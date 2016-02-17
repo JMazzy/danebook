@@ -20,6 +20,7 @@ class Profile < ActiveRecord::Base
   validates :words_to_live_by, length: { maximum: 1000 }
   validates :about_me, length: { maximum: 1000 }
 
+  validates :user_id, presence: true, uniqueness: true
 
   def display_birthday
     "#{Date::MONTHNAMES[birthday.month]} #{birthday.day}, #{birthday.year}"
