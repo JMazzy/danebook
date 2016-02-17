@@ -22,8 +22,7 @@ gem 'uglifier', '2.7.2'
 # Documentation
 gem 'sdoc', '0.4.1', group: :doc
 
-# Application preloader
-gem 'spring', '1.6.2', group: :development
+
 
 # Makes stuff up to prepopulate the database
 gem 'faker', '1.6.1'
@@ -34,7 +33,10 @@ gem 'bcrypt', '3.1.10'
 # Time operations
 gem 'as-duration', '0.1.0'
 
-group :development, :test do
+group :development do
+  # Application preloader
+  gem 'spring', '1.6.2'
+
   # Improves rails' default errors
   gem 'binding_of_caller', '0.7.2'
   gem 'better_errors', '2.1.1'
@@ -42,7 +44,9 @@ group :development, :test do
 
   # Makes the rails console look nicer
   gem 'jazz_hands', '0.5.2', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+end
 
+group :development, :test do
   # Uses pry instead of default IRB
   gem 'pry-byebug', '1.3.2'
 
