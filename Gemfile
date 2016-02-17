@@ -29,10 +29,10 @@ gem 'spring', '1.6.2', group: :development
 gem 'faker', '1.6.1'
 
 # Encryption
-gem 'bcrypt'
+gem 'bcrypt', '3.1.10'
 
 # Time operations
-gem 'as-duration'
+gem 'as-duration', '0.1.0'
 
 group :development, :test do
   # Improves rails' default errors
@@ -47,13 +47,13 @@ group :development, :test do
   gem 'pry-byebug', '1.3.2'
 
   # Rspec-related gems
-  gem 'rspec-rails'
-  gem 'guard-rspec', require: false
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', '3.4.2'
+  gem 'guard-rspec', '4.6.4', require: false
+  gem 'factory_girl_rails', '4.6.0'
 end
 
 group :production do
   # For heroku
-  gem 'rails_12factor'
+  gem 'rails_12factor', '0.0.3'
   ruby '2.3.0'
 end
