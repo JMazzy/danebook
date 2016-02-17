@@ -3,6 +3,7 @@ User.delete_all
 Post.delete_all
 Comment.delete_all
 Like.delete_all
+Friending.delete_all
 
 special_user = User.create(   email: "foo@bar.com",
                               password: "foo1bar2",
@@ -59,10 +60,6 @@ end
                             commentable_type: "Post",
                             body: Faker::Lorem.paragraph
   )
-  Like.create( user_id: user.id,
-                likeable_id: post.id,
-                likeable_type: "Post",
-  )
 end
 
 100.times do
@@ -73,7 +70,18 @@ end
                             commentable_type: "Comment",
                             body: Faker::Lorem.paragraph
   )
+end
 
+100.times do
+  user = User.all.sample
+
+  post = Post.all.sample
+  Like.create( user_id: user.id,
+                likeable_id: post.id,
+                likeable_type: "Post",
+  )
+
+  comment = Comment.all.sample
   Like.create( user_id: user.id,
                 likeable_id: comment.id,
                 likeable_type: "Comment",
