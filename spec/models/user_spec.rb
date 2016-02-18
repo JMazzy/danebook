@@ -13,6 +13,9 @@ describe User do
     let(:nil_email_user) { build( :user, email: nil ) }
     let(:passwordless_user) { build( :user, password: "" ) }
     let(:too_short_password_user) { build( :user, password: "foobar") }
+    let(:short_password_user) { build( :user, password: "password") }
+    let(:long_password_user) { build( :user, password: "foobar" * 4 ) }
+    let(:too_long_password_user) { build( :user, password: "pswrd" * 5 ) }
 
     it "default user is valid" do
       expect( user ).to be_valid
@@ -35,11 +38,32 @@ describe User do
     it "a user with an empty password is invalid" do
       expect( passwordless_user ).not_to be_valid
     end
+
+    it "a user with a (borderline) short password is valid" do
+      expect( short_password_user ).to be_valid
+    end
+
+    it "a user with a too-short password is invalid" do
+      expect( too_short_password_user ).not_to be_valid
+    end
+
+    it "a user with a (borderline) long password is valid" do
+      expect( long_password_user ).to be_valid
+    end
+
+    it "a user with a too-long password is invalid" do
+      expect( too_long_password_user ).not_to be_valid
+    end
   end
 
   context "associations" do
     it "a user has a profile" do
       expect(user.profile).not_to be_nil
+    end
+
+    it "destroying a user destroys the profile" do
+      user.save
+      expect{ user.destroy }.to change{ Profile.count }.by(-1)
     end
   end
 
@@ -85,41 +109,8 @@ end
 
 
 
-# context "extra" do
-  # let(:short_password_user) { build( :user, password: "password") }
-
-  # let(:long_password_user) { build( :user, password: "foobar" * 4 ) }
-  # let(:too_long_password_user) { build( :user, password: "pswrd" * 5 ) }
-
-  #
-  # it "default user is valid" do
-  #   expect(user).to be_valid
-  # end
-  #
-  # it "default user can be saved" do
-  #   expect{ user.save! }.not_to raise_error
-  # end
-  ##
-  # it "a user with a (borderline) short password is valid" do
-  #   expect( short_password_user ).to be_valid
-  # end
-  #
-  # it "a user with a too-short password is invalid" do
-  #   expect( too_short_password_user ).not_to be_valid
-  # end
-  #
-  # it "a user with a (borderline) long password is valid" do
-  #   expect( long_password_user ).to be_valid
-  # end
-  #
-  # it "a user with a too-long password is invalid" do
-  #   expect( too_long_password_user ).not_to be_valid
-  # end
 
 
-  # it "destroying a user destroys the profile" do
-  #   user.save!
-  #   user.destroy!
-  #   expect(user.profile).to be_nil
-  # end
+
+
 # end
