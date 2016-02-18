@@ -27,7 +27,7 @@ end
 
 special_user.save!
 
-10.times do
+100.times do
   password = Faker::Internet.password
   user = User.create(  email: Faker::Internet.safe_email,
                 password: password,
