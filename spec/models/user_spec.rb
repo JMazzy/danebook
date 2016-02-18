@@ -67,6 +67,11 @@ describe User do
     end
   end
 
+  context "generating auth tokens" do
+    it "generates an auth token"
+    it "generates a new auth token"
+  end
+
   context "instance_methods" do
     before do
       user.save!
