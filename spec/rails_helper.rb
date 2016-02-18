@@ -45,6 +45,11 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.include Macros::User
+  config.include Macros::Session
+  config.include Macros::Post
+  config.include Macros::Comment
+  config.include Macros::Like
+  config.include Macros::Friending
 
 
   # RSpec Rails can automatically mix in different behaviours to your tests
