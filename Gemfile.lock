@@ -253,6 +253,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     slop (3.6.0)
     spring (1.6.2)
     sprockets (3.5.2)
@@ -305,6 +307,7 @@ DEPENDENCIES
   rspec-rails (= 3.4.2)
   sass-rails (= 5.0.4)
   sdoc (= 0.4.1)
+  shoulda-matchers
   spring (= 1.6.2)
   uglifier (= 2.7.2)
   web-console (= 3.1.1)

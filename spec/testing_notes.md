@@ -50,3 +50,11 @@
 6. Friending another user
   - Happy: friending works
   - Happy: unfriending a friend works
+
+6 Key Paths for Controller Specs
+1.
+2.
+3.
+4.
+5.
+6.
