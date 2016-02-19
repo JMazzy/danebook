@@ -34,14 +34,15 @@
     <div class="row form-group">
       <div class="col-xs-12">
         <%= profile_fields.radio_button :gender, "Male" %>
-        <%= profile_fields.label "Male" %>
+        <%= profile_fields.label :gender_male, "Male" %>
         <%= profile_fields.radio_button :gender, "Female" %>
-        <%= profile_fields.label "Female" %>
+        <%= profile_fields.label :gender_female, "Female" %>
       </div>
     </div>
 
     <div class="row form-group">
       <div class="col-xs-12">
+        <%= profile_fields.label :birthday %>
         <%= profile_fields.date_field :birthday, class: "form-control" %>
       </div>
     </div>

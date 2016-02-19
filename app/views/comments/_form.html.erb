@@ -2,7 +2,7 @@
   <section class="col-xs-10">
 
     <%= form_for @new_comment, html: { method: 'POST' }, url: comments_path(user_id: @user.id) do |f| %>
-      <%= f.text_area :body, class: "form-control", placeholder: "What do you want to say?" %>
+      <%= f.text_area :body, class: "form-control comment-box", placeholder: "What do you want to say?" %>
       <%= f.hidden_field :commentable_id, value: commentable.id %>
       <%= f.hidden_field :commentable_type, value: commentable.class.to_s %>
       <%= f.submit "Comment", class: "btn btn-primary" %>

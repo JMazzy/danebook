@@ -3,7 +3,7 @@
   <article class="col-md-12 form-group">
     <h3>New Post</h3>
     <%= form_for @new_post, html: { method: 'POST' }, url: posts_path(user_id: @user.id) do |f| %>
-      <%= f.text_area :body, placeholder: "What's on your mind?", class: "form-control" %>
+      <%= f.text_area :body, placeholder: "What's on your mind?", class: "form-control", id: "post-body-box" %>
       <%= f.submit "Create Post", class: "btn btn-submit post-button" %>
     <% end %>
   </article>

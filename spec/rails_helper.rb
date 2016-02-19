@@ -48,7 +48,6 @@ RSpec.configure do |config|
   config.include Macros::Session
   config.include Macros::Post
   config.include Macros::Comment
-  config.include Macros::Like
   config.include Macros::Friending
 
 

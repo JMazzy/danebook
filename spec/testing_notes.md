@@ -33,7 +33,7 @@
 1. Signing up for an account
   - Happy: submitting correct information results in a new user being created and redirecting to that user's profile page
   - Sad: submitting empty or invalid information results re-rendering the page and errors showing up on the page
-  - Bad: signing up while already signed in results in errors and a redirect to the root page
+  - Bad: signing up while already signed in results in a redirect to the root page
 2. Signing in to the application
   - Happy: submitting correct information for an existing user takes you to that user's profile page and signs in
   - Sad: submitting empty or invalid information results in re-rendering the page and error messages

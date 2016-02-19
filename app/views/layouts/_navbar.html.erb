@@ -12,7 +12,7 @@
 
     <!--collapsing login form-->
     <section class="navbar-collapse collapse">
-      <%= form_tag session_path, class: "navbar-form navbar-right" do %>
+      <%= form_tag session_path, class: "sign-in-form navbar-form navbar-right" do %>
         <% if signed_in_user? %>
           <%= link_to current_user.full_name, profile_path(current_user.profile) %>
           <%= link_to "Sign Out", logout_path, method: :delete, class: "btn btn-info" %>

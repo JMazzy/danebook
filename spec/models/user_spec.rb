@@ -68,8 +68,17 @@ describe User do
   end
 
   context "generating auth tokens" do
-    it "generates an auth token"
-    it "generates a new auth token"
+    it "generates an auth token" do
+      user.save
+      expect(user.auth_token).not_to be_nil
+    end
+
+    it "generates a new auth token" do
+      user.save
+      at = user.auth_token
+      user.regenerate_auth_token
+      expect(user.auth_token).not_to eq(at)
+    end
   end
 
   context "instance_methods" do
