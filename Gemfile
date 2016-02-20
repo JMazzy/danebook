@@ -33,6 +33,7 @@ gem 'as-duration', '0.1.0'
 
 # File uploads
 gem 'paperclip'
+gem 'aws-sdk'
 
 group :development do
   # Application preloader
