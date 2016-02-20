@@ -35,6 +35,9 @@ gem 'as-duration', '0.1.0'
 gem 'paperclip'
 gem 'aws-sdk'
 
+# ENV management
+gem 'figaro'
+
 group :development do
   # Application preloader
   gem 'spring', '1.6.2'
