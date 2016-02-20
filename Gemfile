@@ -22,8 +22,6 @@ gem 'uglifier', '2.7.2'
 # Documentation
 gem 'sdoc', '0.4.1', group: :doc
 
-
-
 # Makes stuff up to prepopulate the database
 gem 'faker', '1.6.1'
 
@@ -32,6 +30,9 @@ gem 'bcrypt', '3.1.10'
 
 # Time operations
 gem 'as-duration', '0.1.0'
+
+# File uploads
+gem 'paperclip'
 
 group :development do
   # Application preloader
@@ -54,7 +55,6 @@ group :development, :test do
   gem 'rspec-rails', '3.4.2'
   gem 'guard-rspec', '4.6.4', require: false
   gem 'factory_girl_rails', '4.6.0'
-
   gem 'capybara', '2.6.2'
   gem 'launchy', '2.4.3'
   gem 'shoulda-matchers'
