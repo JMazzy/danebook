@@ -5,7 +5,11 @@ describe UsersController do
 
   context "creating a user" do
     scenario "a new user is created with valid input" do
-      expect { post :create, user: attributes_for(:user, { profile_attributes: { first_name: "Foo", last_name: "Bar" } } ) }.to change(User,:count).by(1)
+      expect { post :create, user: attributes_for(:user,
+                                      { profile_attributes: {
+                                        first_name: "Foo",
+                                        last_name: "Bar" } } )
+      }.to change(User,:count).by(1)
     end
 
     scenario "a new user cannot be created due to invalid input" do
