@@ -48,7 +48,6 @@ feature "Signing Up" do
     end
 
     scenario "doesn't allow you to see new_user form" do
-      visit(root_path)
       expect(page).not_to have_css(".new_user")
     end
   end

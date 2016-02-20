@@ -1,5 +1,5 @@
 <!--Post Form-->
-<section class="row post-box">
+<section class="row post-box" id="post-box">
   <article class="col-md-12 form-group">
     <h3>New Post</h3>
     <%= form_for @new_post, html: { method: 'POST' }, url: posts_path(user_id: @user.id) do |f| %>

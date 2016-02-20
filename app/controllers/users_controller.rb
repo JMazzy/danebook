@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_logout, only: [ :new, :create ]
 
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [ :new, :create ]
   skip_before_action :require_current_user, only: [:new, :create, :index, :show]
 
   def index

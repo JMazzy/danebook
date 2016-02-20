@@ -52,9 +52,39 @@
   - Happy: unfriending a friend works
 
 6 Key Paths for Controller Specs
-1.
-2.
-3.
-4.
-5.
-6.
+1. Creating a user
+  - Happy: user is created
+  - Sad: User couldn't be created due to errors
+  - Bad: A user is already signed in, can't create a new one
+2. Updating a profile
+  - Happy: profile is updated
+  - Sad: profile can't be updated
+  - Bad: profile tries to edit another user's profile
+3. Signing in
+  - Happy: user is signed in
+  - Sad: user can't be signed in due to errors
+  - Bad: user is already signed in and make a sign in request
+4. Signing out
+  - Happy: user is signed out
+  - Bad: user isn't signed in and sends a request to sign out
+5. Posting
+  - Happy: a post is created
+  - Sad: a post is not created due to errors
+  - Bad: a user tries to post who isn't signed in
+6. Friending
+  - Happy: a friending is created
+  - Bad: user sends tries to create a friending that already exists
+
+5 Key Things for View Specs
+1. User show page
+  - post form only shows if on the current_user's page
+2. Navbar signin form
+  - only shows if not logged in
+  - shows logout button instead if logged in
+3. Nav tabs
+  - only shows edit link if on current user's page
+4. Posts and comments
+  - delete link only shows up for current user's posts
+5. likes
+  - the likes messages only shows up if there are likes
+  - says like/unlike depending on the situation
