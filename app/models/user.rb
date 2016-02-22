@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   before_create :generate_token
 
   has_many :posts, inverse_of: :user
+  has_many :photos, inverse_of: :user
   has_many :comments
   has_many :likes
 
@@ -44,5 +45,4 @@ class User < ActiveRecord::Base
   def full_name
     "#{profile.first_name} #{profile.last_name}"
   end
-
 end
