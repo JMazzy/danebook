@@ -45,4 +45,28 @@ class User < ActiveRecord::Base
   def full_name
     "#{profile.first_name} #{profile.last_name}"
   end
+
+  def profile_photo
+    if profile_photo_id
+      Photo.find( profile_photo_id )
+    else
+      nil
+    end
+  end
+
+  def profile_photo=(photo)
+    profile_photo_id = photo.id
+  end
+
+  def cover_photo
+    if cover_photo_id
+      Photo.find( cover_photo_id )
+    else
+      nil
+    end
+  end
+
+  def cover_photo=(photo)
+    cover_photo_id = photo.id
+  end
 end

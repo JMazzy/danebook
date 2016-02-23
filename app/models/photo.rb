@@ -8,4 +8,8 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates :image, presence: true, allow_blank: false, allow_nil: false
+
+  def sorted_comments
+    self.comments.order("created_at DESC")
+  end
 end
