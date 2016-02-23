@@ -81,9 +81,9 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       url: "s3-us-east-1.amazonaws.com",
-      bucket: ENV['AWS_BUCKET'],
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+      bucket: Rails.application.secrets.s3_bucket_name,
+      access_key_id: Rails.application.secrets.aws_access_key_id,
+      secret_access_key: Rails.application.secrets.aws_secret_access_key
     }
   }
 
