@@ -17,8 +17,18 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new( photo_params )
+    @user = current_user
+    image = params[:photo][:image]
+    @photo = Photo.new
+
+    if image.is_a?(String)
+      @photo.image = open(image)
+    else
+      @photo.image = image
+    end
+
     @photo.user_id = current_user.id
+
     if @photo.save
       flash[:success] = "Photo created!"
       redirect_to photo_path(@photo)
@@ -29,10 +39,12 @@ class PhotosController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @photo = Photo.find(params[:id])
   end
 
   def update
+    @user = current_user
     @photo = Photo.find(params[:id])
     if @photo.update( photo_params )
       flash[:success] = "Photo updated!"

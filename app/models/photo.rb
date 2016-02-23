@@ -4,10 +4,8 @@ class Photo < ActiveRecord::Base
   belongs_to :user, inverse_of: :photos
   has_many :comments, as: :commentable
 
-  has_attached_file :image
+  has_attached_file :image, styles: { medium: "200x200#", thumb: "75x75#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  def image_from_url(url)
-    self.image = open(url)
-  end
+  validates :image, presence: true, allow_blank: false, allow_nil: false
 end

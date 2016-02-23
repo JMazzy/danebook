@@ -12,7 +12,7 @@
 <section class="row">
   <% @photos.each do |photo| %>
     <div class="col-md-3">
-      <%= image_tag photo.image.url, width: "200px" %>
+      <%= link_to (image_tag photo.image.url(:medium), width: "200px", height: "200px"), photo_path(photo) %>
     </div>
   <% end %>
 </section>

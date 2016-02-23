@@ -1,5 +1,12 @@
 <section class="row">
-  <div class="col-md-3">
+  <div class="col-md-6 col-md-offset-3">
     <%= image_tag @photo.image.url %>
+
+    <p><%= link_to "All Photos", photos_path(@photo.user) %></p>
+
+    <% if @photo.user == current_user %>
+      <p><%= link_to "Edit", edit_photo_path(@photo) %></p>
+      <p><%= link_to "Delete", photo_path(@photo), method: :delete %></p>
+    <% end %>
   </div>
 </section>
