@@ -47,10 +47,10 @@ special_user.save!
 
   5.times do
     user.posts.build( body: Faker::Lorem.paragraph )
-    user.photos.build( image: Faker::Placeholdit.image )
+    # user.photos.build( image: Faker::Placeholdit.image )
   end
 
-  user.save!
+  user.save! if user.valid?
 end
 
 100.times do

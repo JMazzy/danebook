@@ -69,4 +69,12 @@ class User < ActiveRecord::Base
   def cover_photo=(photo)
     cover_photo_id = photo.id
   end
+
+  def self.send_welcome_email(user_id)
+    UserMailer.welcome(User.find(user_id)).deliver!
+  end
+
+  def send_welcome_email
+    User.send_welcome_email(self.id)
+  end
 end

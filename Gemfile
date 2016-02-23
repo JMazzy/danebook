@@ -38,6 +38,9 @@ gem 'aws-sdk', '< 2.0'
 # ENV management
 gem 'figaro'
 
+# Delayed jobs...
+gem 'delayed_job_active_record'
+
 group :development do
   # Application preloader
   gem 'spring', '1.6.2'
@@ -46,6 +49,9 @@ group :development do
   gem 'binding_of_caller', '0.7.2'
   gem 'better_errors', '2.1.1'
   gem 'web-console', '3.1.1'
+
+  # Dev emails
+  gem 'letter_opener'
 
   # Makes the rails console look nicer
   gem 'jazz_hands', '0.5.2', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'

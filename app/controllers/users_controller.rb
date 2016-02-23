@@ -30,6 +30,9 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "User successfully created!"
+
+      User.delay.send_welcome_email(@user.id)
+
       redirect_to profile_path(@user.profile)
     else
       flash.now[:danger] = "User could not be created due to errors."
