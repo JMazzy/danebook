@@ -1,0 +1,18 @@
+<%= render partial: 'layouts/tabs', locals: { user: @user } %>
+
+<section class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="text-center">Photos</h2>
+  </div>
+  <div class="col-md-3">
+    <%= link_to "New Photo", new_photo_path, class: "btn btn-primary pull-right" if @user == current_user %>
+  </div>
+</section>
+
+<section class="row">
+  <% @photos.each do |photo| %>
+    <div class="col-md-3">
+      <%= image_tag photo.image.url, width: "200px" %>
+    </div>
+  <% end %>
+</section>

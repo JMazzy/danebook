@@ -1,2 +1,62 @@
 class PhotosController < ApplicationController
+  skip_before_action :require_current_user, only: [:index, :show]
+
+  def index
+    user_id = params[:user_id] || current_user.id
+    @user = User.find(user_id)
+    @photos = Photo.where(user_id: user_id)
+  end
+
+  def show
+    @photo = Photo.find(params[:id])
+  end
+
+  def new
+    @user = current_user
+    @photo = Photo.new
+  end
+
+  def create
+    @photo = Photo.new( photo_params )
+    @photo.user_id = current_user.id
+    if @photo.save
+      flash[:success] = "Photo created!"
+      redirect_to photo_path(@photo)
+    else
+      flash.now[:danger] = "Photo could not be created."
+      render :new
+    end
+  end
+
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    if @photo.update( photo_params )
+      flash[:success] = "Photo updated!"
+      redirect_to photo_path(@photo)
+    else
+      flash.now[:danger] = "Photo could not be updated."
+      render :edit
+    end
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    if @photo.destroy
+      flash[:success] = "Photo deleted!"
+      redirect_to photos_path( user_id: current_user.id )
+    else
+      flash[:danger] = "Photo could not be deleted."
+      redirect_to :back
+    end
+  end
+
+  private
+
+  def photo_params
+    params.require(:photo).permit(:image)
+  end
 end

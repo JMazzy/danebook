@@ -41,14 +41,14 @@ module ApplicationHelper
   def require_logout
     if signed_in_user?
       flash[:error] = "You must sign out to do that!"
-      redirect_to root_path  #< Remember this is a custom route
+      redirect_to user_path(current_user)
     end
   end
 
   def require_current_user
     unless params[:id] == current_user.id.to_s || params[:user_id] == current_user.id.to_s
       flash[:error] = "You're not authorized to do that!"
-      redirect_to root_url
+      redirect_to :back
     end
   end
 

@@ -33,7 +33,7 @@ gem 'as-duration', '0.1.0'
 
 # File uploads
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 # ENV management
 gem 'figaro'

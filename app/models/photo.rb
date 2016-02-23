@@ -5,11 +5,9 @@ class Photo < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_attached_file :image
-  validates_attachment_content_type :image, content_type: ["image/png", "image/jpg", "image/jpeg", "image/gif"]
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def image_from_url(url)
     self.image = open(url)
   end
-
-  validates :image, presence: true
 end

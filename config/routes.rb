@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
 
   resources :friendings, only: [:create,:destroy]
+
+  resources :photos
 end
