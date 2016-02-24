@@ -4,9 +4,7 @@ class PostsController < ApplicationController
   skip_before_action :require_current_user
 
   def index
-    @posts = Post.all.order("updated_at DESC")
-    @new_post = current_user.posts.build
-    @new_comment = current_user.comments.build
+    redirect_to user_path(current_user)
   end
 
   def create

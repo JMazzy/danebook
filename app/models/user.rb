@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
             length: { in: 8..24 },
             allow_nil: true
 
+  has_many :stories
+
   has_secure_password
 
   def generate_token
@@ -53,6 +55,14 @@ class User < ActiveRecord::Base
   def profile_photo
     if photo_id = self.profile.profile_photo_id
       Photo.find(photo_id).image.url(:medium)
+    else
+      "blank_profile_photo.png"
+    end
+  end
+
+  def photo_thumb
+    if photo_id = self.profile.profile_photo_id
+      Photo.find(photo_id).image.url(:thumb)
     else
       "blank_profile_photo.png"
     end

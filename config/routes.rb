@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :friendings, only: [:create,:destroy]
 
   resources :photos
+
+  resources :stories
 end

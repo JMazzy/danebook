@@ -9,8 +9,8 @@ class Post < ActiveRecord::Base
   after_create :create_stories
 
   def create_stories
-    (self.user.friends + [user]).uniq.each do |user|
-      Story.create( subject: self, name: "post_created", direction: "to", user: user )
+    (self.user.friends + [self.user]).each do |story_user|
+      Story.create( subject: self, name: "post_created", user: story_user )
     end
   end
 

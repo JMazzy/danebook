@@ -1,0 +1,25 @@
+
+
+<section class="row">
+  <section class="col-md-4">
+    <%= image_tag current_user.photo_thumb %>
+    <%= link_to "#{current_user.full_name}", user_path(current_user) %>
+
+    <h2>Recently Active</h2>
+
+    <% @active_users.each do |user| %>
+      <%= image_tag user.photo_thumb %>
+      <%= link_to "#{user.full_name}", user_path(user) %>
+    <% end %>
+
+  </section>
+  <section class="col-md-8">
+
+    <%= render partial: "posts/form" %>
+
+    <% @stories.each do |story| %>
+      <%= render_story(story) %>
+    <% end %>
+
+  </section>
+</section>

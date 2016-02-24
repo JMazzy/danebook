@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224000943) do
+ActiveRecord::Schema.define(version: 20160224174308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,18 @@ ActiveRecord::Schema.define(version: 20160224000943) do
   add_index "profiles", ["cover_photo_id"], name: "index_profiles_on_cover_photo_id", using: :btree
   add_index "profiles", ["profile_photo_id"], name: "index_profiles_on_profile_photo_id", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
+
+  create_table "stories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "stories", ["subject_id", "subject_type"], name: "index_stories_on_subject_id_and_subject_type", using: :btree
+  add_index "stories", ["user_id"], name: "index_stories_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
