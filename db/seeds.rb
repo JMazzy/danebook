@@ -29,11 +29,11 @@ special_user.save!
 
 100.times do
   password = Faker::Internet.password
-  user = User.create(  email: Faker::Internet.safe_email,
+  user = User.create( email: Faker::Internet.safe_email,
                 password: password,
                 password_confirmation: password )
 
-  user.build_profile( first_name: Faker::Name.first_name,
+  user.create_profile( first_name: Faker::Name.first_name,
                       last_name: Faker::Name.last_name,
                       gender: ["Male", "Female"].sample,
                       birthday: Faker::Time.between(120.years.ago, 13.years.ago),
@@ -46,11 +46,8 @@ special_user.save!
                   )
 
   5.times do
-    user.posts.build( body: Faker::Lorem.paragraph )
-    # user.photos.build( image: Faker::Placeholdit.image )
+    user.posts.create( body: Faker::Lorem.paragraph )
   end
-
-  user.save! if user.valid?
 end
 
 100.times do
@@ -93,7 +90,7 @@ User.all.each do |user|
   User.all.each do |friend|
     unless user == friend
       friending = Friending.new( friender_id: user.id, friendee_id: friend.id )
-      friending.save!
+      friending.save
     end
   end
 end

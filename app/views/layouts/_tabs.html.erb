@@ -2,8 +2,8 @@
   <div class="col-xs-12">
     <div class="cover-photo-area text-center">
       <h1 class="cover-photo-name"><%= user.full_name %></h1>
-      <%= image_tag "blank_cover_photo.png", class: "cover-photo" %>
-      <%= image_tag "blank_profile_photo.png", class: "profile-photo" %>
+      <%= image_tag user.cover_photo, class: "cover-photo" %>
+      <%= image_tag user.profile_photo, class: "profile-photo" %>
       <%= friend_button(user) %>
     </div>
   </div>
@@ -11,10 +11,21 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
       <ul class="nav nav-tabs tabs">
-        <li role="presentation"><%= link_to "Timeline", user_path(user) %></li>
-        <li role="presentation"><%= link_to "About", profile_path(user.profile) %></li>
-        <li role="presentation"><%= link_to "Photos (#{user.photos.count(:id)})", photos_path(user_id: user.id) %></li>
-        <li role="presentation"><%= link_to "Friends (#{user.friends.count(:id)})", users_path(user_id: user.id) %></li>
+        <li role="presentation">
+          <%= link_to "Timeline", user_path(user) %>
+        </li>
+
+        <li role="presentation">
+          <%= link_to "About", profile_path(user.profile) %>
+        </li>
+
+        <li role="presentation">
+          <%= link_to "Photos (#{user.photos.count(:id)})", photos_path(user_id: user.id) %>
+        </li>
+
+        <li role="presentation">
+          <%= link_to "Friends (#{user.friends.count(:id)})", users_path(user_id: user.id) %>
+        </li>
       </ul>
   </div>
   <div class="col-md-3">

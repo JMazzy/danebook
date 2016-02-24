@@ -46,35 +46,23 @@ class User < ActiveRecord::Base
     "#{profile.first_name} #{profile.last_name}"
   end
 
-  def profile_photo
-    if profile_photo_id
-      Photo.find( profile_photo_id )
-    else
-      nil
-    end
-  end
-
-  def profile_photo=(photo)
-    profile_photo_id = photo.id
-  end
-
-  def cover_photo
-    if cover_photo_id
-      Photo.find( cover_photo_id )
-    else
-      nil
-    end
-  end
-
-  def cover_photo=(photo)
-    cover_photo_id = photo.id
-  end
-
   def self.send_welcome_email(user_id)
     UserMailer.welcome(User.find(user_id)).deliver!
   end
 
-  def send_welcome_email
-    User.send_welcome_email(self.id)
+  def profile_photo
+    if photo_id = self.profile.profile_photo_id
+      Photo.find(photo_id).image.url(:medium)
+    else
+      "blank_profile_photo.png"
+    end
+  end
+
+  def cover_photo
+    if photo_id = self.profile.cover_photo_id
+      Photo.find(photo_id).image.url
+    else
+      "blank_cover_photo.png"
+    end
   end
 end

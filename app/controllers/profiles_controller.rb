@@ -34,7 +34,9 @@ class ProfilesController < ApplicationController
                                       :currently_lives,
                                       :phone_number,
                                       :words_to_live_by,
-                                      :about_me
+                                      :about_me,
+                                      :profile_photo_id,
+                                      :cover_photo_id
     )
   end
 

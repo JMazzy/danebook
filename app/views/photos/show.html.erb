@@ -7,8 +7,8 @@
     <p><%= link_to "All Photos", photos_path(@photo.user) %></p>
 
     <% if @photo.user == current_user %>
-      <p><%= link_to "Set as Profile", "#" %></p>
-      <p><%= link_to "Set as Cover", "#" %></p>
+      <p><%= link_to "Set as Profile", profile_path(current_user.profile, profile: { profile_photo_id: @photo.id } ), method: :patch %></p>
+      <p><%= link_to "Set as Cover", profile_path(current_user.profile, profile: { cover_photo_id: @photo.id } ), method: :patch %></p>
       <p><%= link_to "Edit", edit_photo_path(@photo) %></p>
       <p><%= link_to "Delete", photo_path(@photo), method: :delete %></p>
     <% end %>
