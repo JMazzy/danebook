@@ -4,12 +4,13 @@ Post.delete_all
 Comment.delete_all
 Like.delete_all
 Friending.delete_all
+Photo.delete_all
 
 special_user = User.create(   email: "foo@bar.com",
                               password: "foo1bar2",
                               password_confirmation: "foo1bar2")
 
-special_user.build_profile( first_name: "Foo",
+special_user.create_profile( first_name: "Foo",
                             last_name: "Bar",
                             gender: "Male",
                             birthday: Faker::Time.between(20.years.ago, 40.years.ago),
@@ -22,18 +23,18 @@ special_user.build_profile( first_name: "Foo",
 )
 
 5.times do
-  special_user.posts.build( body: Faker::Lorem.paragraph )
+  special_user.posts.create( body: Faker::Lorem.paragraph )
 end
 
 special_user.save!
 
-100.times do
+10.times do
   password = Faker::Internet.password
   user = User.create(  email: Faker::Internet.safe_email,
                 password: password,
                 password_confirmation: password )
 
-  user.build_profile( first_name: Faker::Name.first_name,
+  user.create_profile( first_name: Faker::Name.first_name,
                       last_name: Faker::Name.last_name,
                       gender: ["Male", "Female"].sample,
                       birthday: Faker::Time.between(120.years.ago, 13.years.ago),
@@ -46,14 +47,12 @@ special_user.save!
                   )
 
   5.times do
-    user.posts.build( body: Faker::Lorem.paragraph )
-    # user.photos.build( image: Faker::Placeholdit.image )
+    user.posts.create( body: Faker::Lorem.paragraph )
+    user.photos.create( image: Faker::Placeholdit.image )
   end
-
-  user.save! if user.valid?
 end
 
-100.times do
+10.times do
   user = User.all.sample
   post = Post.all.sample
   comment = Comment.create( user_id: user.id,
@@ -63,7 +62,7 @@ end
   )
 end
 
-100.times do
+10.times do
   user = User.all.sample
   comment = Comment.all.sample
   subcomment = Comment.create( user_id: user.id,
@@ -73,7 +72,7 @@ end
   )
 end
 
-100.times do
+10.times do
   user = User.all.sample
 
   post = Post.all.sample
@@ -93,7 +92,7 @@ User.all.each do |user|
   User.all.each do |friend|
     unless user == friend
       friending = Friending.new( friender_id: user.id, friendee_id: friend.id )
-      friending.save!
+      friending.save
     end
   end
 end
