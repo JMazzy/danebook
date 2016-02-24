@@ -7,7 +7,7 @@ feature "Posting" do
   context "on your own timeline" do
 
     before do
-      visit(root_path)
+      visit(login_path)
       fill_in_signin_form(user.email, "foo1bar2")
       click_button("Sign In")
       click_link("Timeline")
@@ -44,7 +44,7 @@ feature "Posting" do
 
   context "on someone else's timeline" do
     before do
-      visit(root_path)
+      visit(login_path)
       fill_in_signin_form(user.email, "foo1bar2")
       click_button("Sign In")
       visit(user_path(other_user))
