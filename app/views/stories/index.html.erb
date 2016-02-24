@@ -1,19 +1,32 @@
-
-
 <section class="row">
-  <section class="col-md-4">
-    <%= image_tag current_user.photo_thumb %>
-    <%= link_to "#{current_user.full_name}", user_path(current_user) %>
+  <section class="col-md-3">
+
+    <div class="row user-mini">
+      <div class="col-xs-5">
+        <%= image_tag current_user.photo_thumb, width: 75, height: 75 %>
+      </div>
+      <div class="col-xs-7">
+        <p><%= link_to "#{current_user.full_name}", user_path(current_user) %></p>
+        <p><%= link_to "Edit Profile", edit_profile_path(current_user.profile) %></p>
+      </div>
+    </div>
 
     <h2>Recently Active</h2>
 
     <% @active_users.each do |user| %>
-      <%= image_tag user.photo_thumb %>
-      <%= link_to "#{user.full_name}", user_path(user) %>
+      <div class="row user-mini">
+        <div class="col-xs-5">
+          <%= image_tag user.photo_thumb, width: 75, height: 75 %>
+        </div>
+        <div class="col-xs-7">
+          <p><%= link_to "#{user.full_name}", user_path(user) %></p>
+          <datetime class="date-text"><%= user.posts.last.created_at.strftime("at %l:%M%P, %B %e, %Y") %></datetime>
+        </div>
+      </div>
     <% end %>
 
   </section>
-  <section class="col-md-8">
+  <section class="col-md-9">
 
     <%= render partial: "posts/form" %>
 

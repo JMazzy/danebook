@@ -1,0 +1,41 @@
+<section class="row photo panel panel-default">
+  <article class="col-md-12">
+
+    <section class="row">
+      <section class="col-xs-2">
+        <%= image_tag photo.user.photo_thumb, width: 100, height: 100, class: "photo" %>
+      </section>
+      <section class="col-xs-10">
+        <%= link_to photo.user.profile.full_name, profile_path(photo.user.profile) %>
+        <br>
+        <datetime class="date-text"><%= photo.created_at.strftime("at %l:%M%P, %B %e, %Y") %></datetime>
+      </section>
+    </section>
+
+    <!--Post Body-->
+    <section class="row">
+      <section class="col-xs-12">
+        <p><%= link_to (image_tag photo.image.url), photo_path(photo) %></p>
+      </section>
+    </section>
+
+    <!-- Like, Comment, Delete links -->
+    <section class="row">
+      <section class="col-md-10">
+
+        <%= render partial: "likes/like_area", locals: { likeable: photo } %>
+
+      </section>
+      <section class="col-md-2">
+        <%= link_to "Delete", photo_path(photo), method: :delete if photo.user == current_user %>
+      </section>
+    </section>
+
+    <%= render partial: "comments/form", locals: { commentable: photo } %>
+
+    <% photo.sorted_comments.each do |comment| %>
+      <%= render partial: "comments/view", locals: { comment: comment } %>
+    <% end %>
+
+  </article>
+</section>

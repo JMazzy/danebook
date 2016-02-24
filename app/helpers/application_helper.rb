@@ -60,7 +60,12 @@ module ApplicationHelper
     !!current_user
   end
 
-  def current_user_home
-    signed_in_user? ? user_path(current_user) : root_path
+  def navbar_forms
+    if signed_in_user?
+      render 'layouts/search_form'
+      render 'layouts/sign_out_form'
+    else
+      render 'layouts/sign_in_form'
+    end
   end
 end

@@ -9,7 +9,7 @@
       <section class="col-xs-10">
         <%= link_to comment.user.full_name, profile_path(comment.user.profile) %>
         <br>
-        <%= comment.created_at %>
+        <datetime class="date-text"><%= comment.created_at.strftime("at %l:%M%P, %B %e, %Y") %></datetime>
         <br>
         <%= comment.body %>
       </section>

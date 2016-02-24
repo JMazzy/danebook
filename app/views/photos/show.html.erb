@@ -2,7 +2,7 @@
 
 <section class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= image_tag @photo.image.url %>
+    <%= image_tag @photo.image.url, class: 'photo' %>
 
     <p><%= link_to "All Photos", photos_path(@photo.user) %></p>
 

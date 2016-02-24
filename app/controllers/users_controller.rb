@@ -5,8 +5,13 @@ class UsersController < ApplicationController
   skip_before_action :require_current_user, only: [:new, :create, :index, :show]
 
   def index
-    @user = params[:user_id] ? User.find(params[:user_id]) : current_user
-    @users = @user.friends
+    if params[:query]
+      @user = current_user
+      @users = User.search(params[:query])
+    else
+      @user = params[:user_id] ? User.find(params[:user_id]) : current_user
+      @users = @user.friends
+    end
   end
 
   def show
@@ -20,7 +25,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to user_path(current_user) if current_user
     @user = User.new
     @profile = @user.build_profile
   end
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
 
       User.delay.send_welcome_email(@user.id)
 
-      redirect_to profile_path(@user.profile)
+      redirect_to edit_profile_path(@user.profile)
     else
       flash.now[:danger] = "User could not be created due to errors."
       render :new

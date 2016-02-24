@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   include Likeable
+  include Storyable
 
   belongs_to :user, inverse_of: :photos
   has_many :comments, as: :commentable

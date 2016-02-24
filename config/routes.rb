@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#new"
+  root "stories#index"
 
   resources :users
   get '/timeline/:id', to: 'users#show', as: 'timeline'
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :edit, :update]
 
   resource :session, :only => [:new, :create, :destroy]
-  get "login" => "sessions#new"
+  get "login" => "users#new"
   delete "logout" => "sessions#destroy"
 
   resources :posts, only: [:index, :create, :destroy]
@@ -22,5 +22,5 @@ Rails.application.routes.draw do
 
   resources :photos
 
-  resources :stories
+  resources :stories, only: [:index]
 end

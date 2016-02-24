@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     if photo_id = self.profile.profile_photo_id
       Photo.find(photo_id).image.url(:medium)
     else
-      "blank_profile_photo.png"
+      "user_silhouette_generic.png"
     end
   end
 
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
     if photo_id = self.profile.profile_photo_id
       Photo.find(photo_id).image.url(:thumb)
     else
-      "blank_profile_photo.png"
+      "user_silhouette_generic.png"
     end
   end
 
@@ -73,6 +73,18 @@ class User < ActiveRecord::Base
       Photo.find(photo_id).image.url
     else
       "blank_cover_photo.png"
+    end
+  end
+
+  def self.search(query)
+    with_profiles = self.joins(:profile)
+    if query
+      # Parameterize that user input!!!
+      with_profiles.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
+    else
+      # If no search term provided, this returns
+      # a relation so we can chain this
+      with_profiles.where("")
     end
   end
 end

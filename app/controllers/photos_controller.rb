@@ -20,21 +20,25 @@ class PhotosController < ApplicationController
 
   def create
     if params[:photo] && params[:photo][:image]
-    @user = current_user
-    image = params[:photo][:image]
-    @photo = Photo.new
+      @user = current_user
+      image = params[:photo][:image]
+      @photo = Photo.new
 
-    if image.is_a?(String)
-      @photo.image = open(image)
-    else
-      @photo.image = image
-    end
+      if image.is_a?(String)
+        @photo.image = open(image)
+      else
+        @photo.image = image
+      end
 
-    @photo.user_id = current_user.id
+      @photo.user_id = current_user.id
 
-    if @photo.save
-      flash[:success] = "Photo created!"
-      redirect_to photo_path(@photo)
+      if @photo.save
+        flash[:success] = "Photo created!"
+        redirect_to photo_path(@photo)
+      else
+        flash.now[:danger] = "Photo could not be created."
+        render :new
+      end
     else
       flash.now[:danger] = "Photo could not be created."
       render :new

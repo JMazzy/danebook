@@ -1,31 +1,17 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <section class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Danebook", current_user_home, class: "navbar-brand" %>
-    </section>
+      <%= render 'layouts/collapse_button' %>
 
-    <!--collapsing login form-->
+      <%= link_to "Danebook", root_path, class: "navbar-brand" %>
+    </section>
+    
+    <%= render 'layouts/search_form' %>
+
     <section class="navbar-collapse collapse">
-      <%= form_tag session_path, class: "navbar-form navbar-right sign-in-form" do %>
-        <% if signed_in_user? %>
-          <%= link_to current_user.full_name, profile_path(current_user.profile) %>
-          <%= link_to "Sign Out", logout_path, method: :delete, class: "btn btn-info" %>
-        <% else %>
-          <div class="form-group" id="sign-in-form">
-            <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
-            <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
-            <%= check_box_tag :remember_me %>
-            <%= label_tag "remember me?" %>
-            <%= submit_tag "Sign In", class: "btn btn-info"%>
-          </div>
-        <% end %>
-      <% end %>
+
+      <%= navbar_forms %>
+
     </section><!--/.navbar-collapse -->
   </div><!--end container-->
 </nav><!--end navbar-->
