@@ -19,6 +19,7 @@ class PhotosController < ApplicationController
   end
 
   def create
+    if params[:photo] && params[:photo][:image]
     @user = current_user
     image = params[:photo][:image]
     @photo = Photo.new

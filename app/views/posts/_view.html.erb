@@ -6,7 +6,7 @@
         <%= image_tag "user_silhouette_generic.png", width: 100, height: 100 %>
       </section>
       <section class="col-xs-10">
-        <%= link_to @user.profile.full_name, profile_path(@user.profile) %>
+        <%= link_to post.user.profile.full_name, profile_path(post.user.profile) %>
         <br>
         <datetime class="date-text"><%= post.created_at %></datetime>
       </section>

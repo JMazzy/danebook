@@ -64,6 +64,16 @@ end
 
 10.times do
   user = User.all.sample
+  photo = Photo.all.sample
+  comment = Comment.create( user_id: user.id,
+                            commentable_id: photo.id,
+                            commentable_type: "Photo",
+                            body: Faker::Lorem.paragraph
+  )
+end
+
+10.times do
+  user = User.all.sample
   comment = Comment.all.sample
   subcomment = Comment.create( user_id: user.id,
                             commentable_id: comment.id,
@@ -85,6 +95,12 @@ end
   Like.create( user_id: user.id,
                 likeable_id: comment.id,
                 likeable_type: "Comment",
+  )
+
+  photo = Photo.all.sample
+  Like.create( user_id: user.id,
+                likeable_id: photo.id,
+                likeable_type: "Photo",
   )
 end
 
