@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   before_action :require_logout, only: [ :create ]
   skip_before_action :require_login, only: [:create]
-  skip_before_action :require_current_user
 
   def new
     redirect_to login_path
@@ -19,7 +18,7 @@ class SessionsController < ApplicationController
       end
 
       flash[:success] = "You've successfully signed in!"
-      redirect_to stories_path
+      redirect_to user_path(@user)
     else
       flash[:error] = "We couldn't sign you in."
       redirect_to root_url

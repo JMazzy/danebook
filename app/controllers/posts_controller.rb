@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Failed to create post."
     end
-    redirect_to :back
+    redirect_to user_path(current_user)
   end
 
   def destroy

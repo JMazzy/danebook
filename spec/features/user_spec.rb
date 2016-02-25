@@ -14,7 +14,7 @@ feature "Signing Up" do
     scenario "redirects to the user's profile page" do
       click_button("Sign Up")
       profile = User.find_by_email("foo@bar.com").profile
-      expect(current_path).to eq(profile_path(profile))
+      expect(current_path).to eq(edit_profile_path(profile))
     end
 
     scenario "shows a success flash message" do

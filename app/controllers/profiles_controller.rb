@@ -8,11 +8,11 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile
     if @profile.update( profile_params )
       flash[:success] = "Profile updated successfully!"
       redirect_to profile_path

@@ -50,7 +50,7 @@ feature "Signing In" do
     scenario "re-renders the same page if incorrect" do
       fill_in_signin_form(nil,nil)
       click_button("Sign In")
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(login_path)
     end
 
     scenario "shows an error message" do
