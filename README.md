@@ -1,15 +1,26 @@
-The Danebook
+# Danebook
+## Joshua Masland-Sarani
 
-This is the Real Dane Deal.
+### The Danebook Project
+- A Facebook clone made as a solo project as part of Viking Code School. 
+- As we learned new things during the first half of the course, I iterated the project to incorporate each new technology.
 
-Josh Masland
+#### Deployed on Heroku
+https://jmazzy-danebook.herokuapp.com
 
+#### How to use the demo
+- Sign up and poke around. 
+- Submit a blank search to see the demo users.
+- Friend, like, comment, and post as you would on Facebook.
 
+#### Key Technologies
+- Ruby on Rails
+- Bootstrap
+- Figaro
+- Paperclip with Amazon S3
+- Delayed Job
+- Heroku
 
-Notes on Newsfeed
-
-
-Story
-  belongs to subject (polymorphic true)
-  belongs to user
-columns: subject_id, subject_type, user_id, name, direction 
+#### Test Technologies
+- Rspec
+- Capybara
