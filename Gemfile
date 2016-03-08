@@ -43,7 +43,7 @@ gem 'delayed_job_active_record'
 
 group :development do
   # Application preloader
-  gem 'spring', '1.6.2'
+  gem 'spring'
 
   # Improves rails' default errors
   gem 'binding_of_caller', '0.7.2'

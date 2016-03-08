@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :require_logout, only: [ :create ]
-  skip_before_action :require_login, only: [:create]
+  before_action :require_logout, only: [ :new, :create ]
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     redirect_to login_path
