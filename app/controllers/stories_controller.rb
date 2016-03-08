@@ -1,5 +1,7 @@
 class StoriesController < ApplicationController
 
+  skip_before_action :require_login, only: [:index]
+
   def index
     if signed_in_user?
       @stories = Story.where( user: current_user ).order(created_at: :desc)
