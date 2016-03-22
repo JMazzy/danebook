@@ -4,6 +4,7 @@ module Storyable
   extend ActiveSupport::Concern
 
   included do
+    has_many :stories, as: :subject, dependent: :destroy
     after_create :create_stories
   end
 

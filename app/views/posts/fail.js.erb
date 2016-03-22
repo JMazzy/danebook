@@ -1,0 +1,7 @@
+console.log("START render post index with AJAX");
+
+var $flash = $("<%= j( render partial: 'layouts/flash' ) %>");
+
+$(".flash-holder").html($flash);
+
+console.log("FINISH render index with AJAX");

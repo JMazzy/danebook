@@ -1,0 +1,10 @@
+console.log("START render comment form with AJAX");
+
+var $formHolder = $( "section[data-type=<%= j(type) %>][data-id=<%= j(id.to_s) %>] .comment-form-holder" );
+
+var $form = $("<%= j( render partial: 'comments/form', locals: { comment: comment, id: id, type: type } )%>");
+
+$formHolder.html( $form );
+$form.slideDown();
+
+console.log("FINISH render comment form with AJAX");

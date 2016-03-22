@@ -1,0 +1,15 @@
+console.log("START render post index with AJAX");
+
+var $new_post = $("<%= j( render partial: 'posts/view', locals: { post: post } )%>");
+
+var $flash = $("<%= j( render partial: 'layouts/flash' ) %>");
+
+$(".story-holder").prepend($new_post);
+$new_post.hide();
+$new_post.slideDown();
+
+
+$(".flash-holder").html($flash);
+$("#post-body-box").val("");
+
+console.log("FINISH render index with AJAX");

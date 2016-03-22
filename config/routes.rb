@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :create, :destroy]
   get '/about/:id', to: 'profiles#show', as: 'about'
 
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:new, :create, :destroy]
 
   resources :likes, only: [:create, :destroy]
 

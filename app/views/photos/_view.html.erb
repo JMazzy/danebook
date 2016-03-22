@@ -31,8 +31,6 @@
       </section>
     </section>
 
-    <%= render partial: "comments/form", locals: { commentable: photo } %>
-
     <% photo.sorted_comments.each do |comment| %>
       <%= render partial: "comments/view", locals: { comment: comment } %>
     <% end %>

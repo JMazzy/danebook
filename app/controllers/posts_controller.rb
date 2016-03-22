@@ -8,13 +8,29 @@ class PostsController < ApplicationController
   end
 
   def create
-    current_user.posts.build( post_params )
+    @post = current_user.posts.build( post_params )
     if current_user.save
-      flash[:success] = "Post created successfully!"
+      flash.now[:success] = "Post created successfully!"
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :show, locals: { post: @post } }
+
+      end
     else
-      flash[:danger] = "Failed to create post."
+      flash.now[:danger] = "Failed to create post."
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :fail }
+
+      end
     end
-    redirect_to user_path(current_user)
+
   end
 
   def destroy

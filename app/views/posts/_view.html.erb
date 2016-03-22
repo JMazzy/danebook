@@ -1,4 +1,4 @@
-<section class="row post panel panel-default">
+<section class="row post panel panel-default" data-type="post" data-id="<%= post.id %>">
   <article class="col-md-12">
     <!-- Post Info -->
     <section class="row">
@@ -31,11 +31,17 @@
       </section>
     </section>
 
-    <%= render partial: "comments/form", locals: { commentable: post } %>
+    <%= link_to "Comment", new_comment_path( comment: { commentable_type: "post", commentable_id: post.id } ), remote: true, class: "comment-link" %>
 
-    <% post.sorted_comments.each do |comment| %>
-      <%= render partial: "comments/view", locals: { comment: comment } %>
-    <% end %>
+    <div class="comment-form-holder">
+
+    </div>
+
+    <div class="comment-holder">
+      <% post.sorted_comments.each do |comment| %>
+        <%= render partial: "comments/view", locals: { comment: comment } %>
+      <% end %>
+    </div>
 
   </article>
 </section>

@@ -1,0 +1,17 @@
+console.log("START render comment with AJAX");
+
+var $new_comment = $("<%= j( render partial: 'comments/view', locals: { comment: comment } )%>");
+
+var $flash = $("<%= j( render partial: 'layouts/flash' ) %>");
+
+$(".comment-form-holder").empty();
+
+$("section[data-type=<%= j(comment.commentable_type.downcase) %>][data-id=<%= j(comment.commentable_id.to_s) %>] .comment-holder").prepend($new_comment);
+
+$new_comment.hide();
+$new_comment.slideDown();
+
+$(".flash-holder").html($flash);
+$("#comment-body-box").val("");
+
+console.log("FINISH render comment with AJAX");

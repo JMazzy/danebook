@@ -30,9 +30,15 @@
 
     <%= render partial: "posts/form" %>
 
-    <% @stories.each do |story| %>
-      <%= render_story(story) %>
-    <% end %>
+    <div class="story-holder">
+
+      <% @stories.each do |story| %>
+      
+        <%= render_story(story) %>
+
+      <% end %>
+
+    </div>
 
   </section>
 </section>

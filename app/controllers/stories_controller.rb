@@ -8,6 +8,14 @@ class StoriesController < ApplicationController
       @active_users = ( @stories.map { |s| s.subject.user } ).uniq
       @new_post = current_user.posts.build
       @new_comment = current_user.comments.build
+
+      respond_to do |format|
+
+        format.html
+
+        format.js
+
+      end
     else
       redirect_to login_path
     end

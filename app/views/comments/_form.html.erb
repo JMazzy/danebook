@@ -1,11 +1,18 @@
 <section class="row comment">
   <section class="col-xs-10">
 
-    <%= form_for @new_comment, html: { method: 'POST' }, url: comments_path(user_id: current_user.id) do |f| %>
+    <%= form_for comment,  html: { method: 'POST' },
+                                url: comments_path(user_id: current_user.id),
+                                remote: true do |f| %>
+
       <%= f.text_area :body, class: "form-control comment-box", placeholder: "What do you want to say?" %>
-      <%= f.hidden_field :commentable_id, value: commentable.id %>
-      <%= f.hidden_field :commentable_type, value: commentable.class.to_s %>
+
+      <%= f.hidden_field :commentable_id, value: id.to_i %>
+
+      <%= f.hidden_field :commentable_type, value: type.capitalize %>
+
       <%= f.submit "Comment", class: "btn btn-primary" %>
+
     <% end %>
 
   </section>

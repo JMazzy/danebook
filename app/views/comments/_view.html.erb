@@ -1,4 +1,4 @@
-<section class="row comment panel panel-default">
+<section class="row comment panel panel-default" data-type="comment" data-id="<%= comment.id %>">
   <article class="col-md-12">
 
     <!-- Comment by Other User-->
@@ -28,11 +28,17 @@
       </section>
     </section>
 
-    <%= render partial: "comments/form", locals: { commentable: comment } %>
+    <%= link_to "Comment", new_comment_path( comment: { commentable_type: "comment", commentable_id: comment.id } ), remote: true, class: "comment-link" %>
 
-    <% comment.sorted_comments.each do |subcomment| %>
-      <%= render partial: "comments/view", locals: { comment: subcomment } %>
-    <% end %>
+    <div class="comment-form-holder">
+
+    </div>
+
+    <div class="comment-holder">
+      <% comment.sorted_comments.each do |subcomment| %>
+        <%= render partial: "comments/view", locals: { comment: subcomment } %>
+      <% end %>
+    </div>
 
   </article>
 </section>

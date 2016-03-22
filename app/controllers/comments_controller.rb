@@ -2,15 +2,44 @@ class CommentsController < ApplicationController
 
   skip_before_action :require_current_user
 
+  def new
+    @comment = current_user.comments.build( comment_params )
+
+    respond_to do |format|
+
+      format.html { redirect_to user_path(current_user) }
+
+      format.js { render :new, locals: { comment: @comment, id: @comment.commentable_id, type: @comment.commentable_type } }
+
+    end
+  end
+
   def create
+
     comment = Comment.new( comment_params )
+
     comment.user_id = current_user.id
     if comment.save
       flash[:success] = "Comment created!"
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :show, locals: { comment: comment } }
+
+      end
     else
       flash[:danger] = "No comment created."
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :fail }
+
+      end
     end
-    redirect_to :back
   end
 
   def destroy

@@ -17,11 +17,15 @@
 
     <!--List of Posts-->
 
-    <% @user.sorted_posts.each do |post| %>
+    <div class="story-holder">
 
-      <%= render partial: "posts/view", locals: { post: post } %>
+      <% @user.sorted_posts.each do |post| %>
 
-    <% end %>
+        <%= render partial: "posts/view", locals: { post: post } %>
+
+      <% end %>
+
+    </div>
 
   </section> <!--end right column-->
 </div> <!--end row containing all timeline content-->
