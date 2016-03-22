@@ -6,7 +6,7 @@ var $flash = $("<%= j( render partial: 'layouts/flash' ) %>");
 
 $(".comment-form-holder").empty();
 
-$("section[data-type=<%= j(comment.commentable_type.downcase) %>][data-id=<%= j(comment.commentable_id.to_s) %>] .comment-holder").prepend($new_comment);
+$($("section[data-type=<%= j(comment.commentable_type.downcase) %>][data-id=<%= j(comment.commentable_id.to_s) %>] .comment-holder")[0]).prepend($new_comment);
 
 $new_comment.hide();
 $new_comment.slideDown();

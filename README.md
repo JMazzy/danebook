@@ -2,14 +2,15 @@
 ## Joshua Masland-Sarani
 
 ### The Danebook Project
-- A Facebook clone made as a solo project as part of Viking Code School. 
+- A Facebook clone made as a solo project as part of Viking Code School.
 - As we learned new things during the first half of the course, I iterated the project to incorporate each new technology.
+- After learning AJAX, I have been adding that functionality as well.
 
 #### Deployed on Heroku
 https://jmazzy-danebook.herokuapp.com
 
 #### How to use the demo
-- Sign up and poke around. 
+- Sign up and poke around.
 - Submit a blank search to see the demo users.
 - Friend, like, comment, and post as you would on Facebook.
 
