@@ -31,6 +31,8 @@
       </section>
     </section>
 
+    <%= link_to "Comment", new_comment_path( comment: { commentable_type: "photo", commentable_id: photo.id } ), remote: true, class: "comment-link" %>
+
     <% photo.sorted_comments.each do |comment| %>
       <%= render partial: "comments/view", locals: { comment: comment } %>
     <% end %>

@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
     comment.user_id = current_user.id
     if comment.save
-      flash[:success] = "Comment created!"
+      flash.now[:success] = "Comment created!"
 
       respond_to do |format|
 
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
       end
     else
-      flash[:danger] = "No comment created."
+      flash.now[:danger] = "No comment created."
 
       respond_to do |format|
 

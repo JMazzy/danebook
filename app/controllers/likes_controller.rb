@@ -8,21 +8,51 @@ class LikesController < ApplicationController
                       likeable_type: params[:likeable_type]
     )
     if like.save
-      flash[:success] = "#{like.likeable_type} Liked!"
+      flash.now[:success] = "#{like.likeable_type} Liked!"
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :show, locals: { like: like } }
+
+      end
     else
-      flash[:danger] = "Could not like!"
+      flash.now[:danger] = "Could not like!"
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :fail }
+
+      end
     end
-    redirect_to :back
   end
 
   def destroy
     like = Like.find(params[:id])
     if like.destroy
-      flash[:success] = "Unliked!"
+      flash.now[:success] = "Unliked!"
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :destroy, locals: { like: like } }
+
+      end
     else
-      flash[:danger] = "Could not unlike!"
+      flash.now[:danger] = "Could not unlike!"
+
+      respond_to do |format|
+
+        format.html { redirect_to user_path(current_user) }
+
+        format.js { render :fail }
+
+      end
     end
-    redirect_to :back
   end
 
   private

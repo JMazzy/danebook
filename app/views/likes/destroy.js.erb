@@ -1,0 +1,14 @@
+console.log("START render like with AJAX");
+
+var $likeLink = $("<%= j( link_to "Like", likes_path( likeable_type: like.likeable_type, likeable_id: like.likeable_id.to_s ), method: :post, remote: true )%>");
+
+var $flash = $("<%= j( render partial: 'layouts/flash' ) %>");
+
+$(".like-form-holder").empty();
+
+$($("section[data-type=<%= j(like.likeable_type.downcase) %>][data-id=<%= j(like.likeable_id.to_s) %>] .like")[0]).html($likeLink);
+
+$(".flash-holder").html($flash);
+$("#like-body-box").val("");
+
+console.log("FINISH render like with AJAX");
