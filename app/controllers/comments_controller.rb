@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
 
-  skip_before_action :require_current_user
-
   def new
     @comment = current_user.comments.build( comment_params )
 

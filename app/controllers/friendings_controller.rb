@@ -1,5 +1,4 @@
 class FriendingsController < ApplicationController
-  skip_before_action :require_current_user
 
   def create
     friendee = User.find(params[:friendee_id])

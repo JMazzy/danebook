@@ -1,7 +1,5 @@
 class LikesController < ApplicationController
 
-  skip_before_action :require_current_user
-
   def create
     like = Like.new( user_id: current_user.id,
                       likeable_id: params[:likeable_id],
